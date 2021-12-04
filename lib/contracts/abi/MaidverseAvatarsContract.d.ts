@@ -1,0 +1,1 @@
+//# sourceMappingURL=MaidverseAvatarsContract.d.ts.map
