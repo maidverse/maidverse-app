@@ -165,4 +165,21 @@ input {
   clear: both;
   visibility: hidden;
 }
+body {
+  background-color: #000;
+}
+.alert {
+  width: 350.5px;
+  height: 271.5px;
+  background-image: url("/images/ui/dialogue/popup-back.png");
+  background-size: cover;
+}
+.alert > .confirm-button {
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/dialogue/confirm.png");
+  background-size: cover;
+  color: #fff;
+}
 
