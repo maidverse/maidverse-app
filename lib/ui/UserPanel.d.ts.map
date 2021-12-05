@@ -1,1 +1,1 @@
-{"version":3,"file":"UserPanel.d.ts","sourceRoot":"","sources":["../../src/ui/UserPanel.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,kBAAkB,CAAC;AAG5C,MAAM,CAAC,OAAO,OAAO,SAAU,SAAQ,QAAQ;gBAE/B,CAAC,EAAE,MAAM,EAAE,CAAC,EAAE,MAAM;CAInC"}
+{"version":3,"file":"UserPanel.d.ts","sourceRoot":"","sources":["../../src/ui/UserPanel.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,kBAAkB,CAAC;AAG5C,MAAM,CAAC,OAAO,OAAO,SAAU,SAAQ,QAAQ;;CAS9C"}

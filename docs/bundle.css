@@ -310,4 +310,36 @@ body {
   text-align: center;
   padding-top: 6px;
 }
+.bottom-bar {
+  width: 850px;
+  height: 50px;
+  background-image: url("/images/ui/bottom-bar.png");
+  background-size: 850px 31.5px;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+}
+.bottom-bar > a {
+  margin: 0 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: center;
+  font-weight: bold;
+  font-size: 12px;
+}
+.bottom-bar > a > span {
+  margin: 5px 0 10px;
+}
+.user-panel > .connect-button {
+  display: block;
+  width: 85px;
+  height: 26.5px;
+  background-image: url("/images/ui/connect.png");
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding-top: 4px;
+}
 

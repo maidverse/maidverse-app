@@ -3,8 +3,11 @@ import { el } from "@hanul/skynode";
 
 export default class UserPanel extends GameNode {
 
-    constructor(x: number, y: number) {
-        super(x, y);
-        this.dom = el(".user-panel", "User Panel");
+    constructor() {
+        super(0, 0);
+        this.changeCenter(85 / 2, -26.5 / 2);
+        this.dom = el(".user-panel",
+            el("a.connect-button", "Connect"),
+        );
     }
 }
