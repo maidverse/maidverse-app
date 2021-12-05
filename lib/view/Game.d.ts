@@ -3,7 +3,9 @@ import { View, ViewParams } from "skyrouter";
 export default class Game implements View {
     static current: Game;
     screen: Fullscreen;
+    private bottomBar;
     constructor();
+    private repositeUI;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
 }

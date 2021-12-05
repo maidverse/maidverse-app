@@ -1,1 +1,1 @@
-{"version":3,"file":"BottomBar.js","sourceRoot":"","sources":["../../src/ui/BottomBar.ts"],"names":[],"mappings":""}
+{"version":3,"file":"BottomBar.js","sourceRoot":"","sources":["../../src/ui/BottomBar.ts"],"names":[],"mappings":";;AAAA,gDAA4C;AAC5C,4CAAoC;AAEpC,MAAqB,SAAU,SAAQ,oBAAQ;IAE3C;QACI,KAAK,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;QACZ,IAAI,CAAC,GAAG,GAAG,IAAA,YAAE,EAAC,aAAa,EAAE,YAAY,CAAC,CAAC;IAC/C,CAAC;CACJ;AAND,4BAMC"}

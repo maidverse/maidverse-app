@@ -1,9 +1,9 @@
 import { ContractInterface, ethers } from "ethers";
 import EventContainer from "eventcontainer";
-//import Alert from "../component/dialogue/Alert";
 import Config from "../Config";
 import NetworkProvider from "../ethereum/NetworkProvider";
 import Wallet from "../ethereum/Wallet";
+import Alert from "../ui/dialogue/Alert";
 
 export default abstract class Contract<CT extends ethers.Contract> extends EventContainer {
 
@@ -18,7 +18,7 @@ export default abstract class Contract<CT extends ethers.Contract> extends Event
                 this.fireEvent(eventName, ...args);
             });
         }
-        Wallet.on("chainChanged", () => this.walletContract = undefined);
+        Wallet.on("chainChanged", async () => this.walletContract = undefined);
     }
 
     public get interface() {
@@ -36,11 +36,9 @@ export default abstract class Contract<CT extends ethers.Contract> extends Event
 
     public async connectAndGetWalletContract() {
         if (await Wallet.loadChainId() !== Config.chainId) {
-            alert("Wrong Network. Please change to Mainnet.");
-            //TODO:
-            /*new Alert("Error", "Wrong Network. Please change to Mainnet.", "Ok", () => {
+            new Alert("Error", "Wrong Network. Please change to Mainnet.", () => {
                 Wallet.disconnectFromWalletConnect();
-            });*/
+            });
         } else {
             if (await Wallet.connected() !== true) {
                 await Wallet.connect();

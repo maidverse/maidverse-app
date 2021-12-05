@@ -1,1 +1,1 @@
-{"version":3,"file":"SocialButton.d.ts","sourceRoot":"","sources":["../../src/ui/SocialButton.ts"],"names":[],"mappings":""}
+{"version":3,"file":"SocialButton.d.ts","sourceRoot":"","sources":["../../src/ui/SocialButton.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,kBAAkB,CAAC;AAG5C,MAAM,CAAC,OAAO,OAAO,YAAa,SAAQ,QAAQ;gBAElC,CAAC,EAAE,MAAM,EAAE,CAAC,EAAE,MAAM;CAInC"}

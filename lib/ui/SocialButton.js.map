@@ -1,1 +1,1 @@
-{"version":3,"file":"SocialButton.js","sourceRoot":"","sources":["../../src/ui/SocialButton.ts"],"names":[],"mappings":""}
+{"version":3,"file":"SocialButton.js","sourceRoot":"","sources":["../../src/ui/SocialButton.ts"],"names":[],"mappings":";;AAAA,gDAA4C;AAC5C,4CAAoC;AAEpC,MAAqB,YAAa,SAAQ,oBAAQ;IAE9C,YAAY,CAAS,EAAE,CAAS;QAC5B,KAAK,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;QACZ,IAAI,CAAC,GAAG,GAAG,IAAA,YAAE,EAAC,gBAAgB,EAAE,eAAe,CAAC,CAAC;IACrD,CAAC;CACJ;AAND,+BAMC"}

@@ -165,21 +165,149 @@ input {
   clear: both;
   visibility: hidden;
 }
+* {
+  font-family: bree !important;
+}
 body {
-  background-color: #000;
+  background-color: #999;
 }
 .alert {
   width: 350.5px;
   height: 271.5px;
   background-image: url("/images/ui/dialogue/popup-back.png");
   background-size: cover;
+  color: #663a3b;
+  position: relative;
+  padding: 10px;
+}
+.alert > h1 {
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+}
+.alert > p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 170px;
 }
 .alert > .confirm-button {
+  position: absolute;
+  left: calc(50% - 73px);
+  bottom: 20px;
   display: block;
   width: 146px;
   height: 31.5px;
   background-image: url("/images/ui/dialogue/confirm.png");
   background-size: cover;
   color: #fff;
+  text-align: center;
+  padding-top: 6px;
+}
+.confirm {
+  width: 350.5px;
+  height: 271.5px;
+  background-image: url("/images/ui/dialogue/popup-back.png");
+  background-size: cover;
+  color: #663a3b;
+  position: relative;
+  padding: 10px;
+}
+.confirm > h1 {
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+}
+.confirm > p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 170px;
+}
+.confirm > .confirm-button {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/dialogue/confirm.png");
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding-top: 6px;
+}
+.confirm > .cancel-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/dialogue/cancel.png");
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding-top: 6px;
+}
+.prompt {
+  width: 350.5px;
+  height: 271.5px;
+  background-image: url("/images/ui/dialogue/popup-back.png");
+  background-size: cover;
+  color: #663a3b;
+  position: relative;
+  padding: 10px;
+}
+.prompt > h1 {
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+}
+.prompt > p {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100px;
+}
+.prompt > input {
+  display: block;
+  margin: auto;
+  width: 276px;
+  height: 38.5px;
+  background-color: transparent;
+  background-image: url("/images/ui/dialogue/input.png");
+  background-size: cover;
+  text-align: center;
+  font-size: 16px;
+}
+.prompt > .confirm-button {
+  position: absolute;
+  left: 20px;
+  bottom: 20px;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/dialogue/confirm.png");
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding-top: 6px;
+}
+.prompt > .cancel-button {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/dialogue/cancel.png");
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding-top: 6px;
 }
 

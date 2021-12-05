@@ -3,13 +3,35 @@
     height          : 271.5px;
     background-image: url("/images/ui/dialogue/popup-back.png");
     background-size : cover;
+    color           : #663a3b;
+    position        : relative;
+    padding         : 10px;
+
+    >h1 {
+        font-weight: bold;
+        text-align : center;
+        padding    : 10px 0;
+    }
+
+    >p {
+        display        : flex;
+        flex-direction : column;
+        justify-content: center;
+        text-align     : center;
+        height         : 170px;
+    }
 
     >.confirm-button {
+        position        : absolute;
+        left            : calc(50% - 73px);
+        bottom          : 20px;
         display         : block;
         width           : 146px;
         height          : 31.5px;
         background-image: url("/images/ui/dialogue/confirm.png");
         background-size : cover;
         color           : #fff;
+        text-align      : center;
+        padding-top     : 6px;
     }
 }
