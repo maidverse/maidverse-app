@@ -1,5 +1,6 @@
 import { GameNode } from "@hanul/skyengine";
 import { DomNode, el } from "@hanul/skynode";
+import Game from "../../view/Game";
 
 export default class Prompt extends GameNode {
 
@@ -25,5 +26,6 @@ export default class Prompt extends GameNode {
             }),
             el("a.cancel-button", "Cancel", { click: () => this.delete() }),
         );
+        Game.current.screen.root.append(this);
     }
 }

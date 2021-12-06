@@ -1,5 +1,6 @@
 import { GameNode } from "@hanul/skyengine";
 import { el } from "@hanul/skynode";
+import Game from "../../view/Game";
 
 export default class Alert extends GameNode {
 
@@ -17,5 +18,6 @@ export default class Alert extends GameNode {
                 },
             }),
         );
+        Game.current.screen.root.append(this);
     }
 }

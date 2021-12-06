@@ -1,5 +1,6 @@
 import { GameNode } from "@hanul/skyengine";
 import { el } from "@hanul/skynode";
+import Game from "../../view/Game";
 
 export default class Confirm extends GameNode {
 
@@ -16,5 +17,6 @@ export default class Confirm extends GameNode {
             }),
             el("a.cancel-button", "Cancel", { click: () => this.delete() }),
         );
+        Game.current.screen.root.append(this);
     }
 }
