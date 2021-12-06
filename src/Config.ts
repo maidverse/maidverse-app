@@ -11,6 +11,6 @@ export default {
     chainId: 3,
     endpoint: `wss://ropsten.infura.io/ws/v3/${INFURA_ID}`,
     contracts: {
-        MaidverseAvatars: "0xe213Abd40606515487a3dad93aD3b86454684492",
+        MaidverseAvatars: "0x26e1e53CF91538AB29cf16EE8b6983Ae3e6566B6",
     },
 };

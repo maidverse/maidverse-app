@@ -11,7 +11,7 @@ export default class Enter extends GameNode {
     private continueButton: DomNode;
     private dot1: DomNode;
     private dot2: DomNode;
-    private step = 0;
+    private steps = 0;
 
     constructor(discordAuthed: boolean) {
         super(0, 0);
@@ -24,13 +24,14 @@ export default class Enter extends GameNode {
             this.content = el(".content"),
             el("footer",
                 this.continueButton = el("a.continue-button", "Continue", {
-                    click: () => {
-                        if (this.step === 1) {
+                    click: async () => {
+                        if (this.steps === 1) {
                             this.showConnectWallet();
                         }
-                        if (this.step === 3) {
+                        if (this.steps === 3) {
                             this.delete();
-                            Game.current.createUI();
+                            const address = await Wallet.loadAddress();
+                            Game.current.loadUserPanel(address!);
                         }
                     },
                 }),
@@ -49,7 +50,7 @@ export default class Enter extends GameNode {
                 href: Config.discordOauth,
             }),
         );
-        this.step = 0;
+        this.steps = 0;
         this.continueButton.addClass("off");
         this.dot1.addClass("on");
         this.dot2.deleteClass("on");
@@ -57,9 +58,9 @@ export default class Enter extends GameNode {
 
     private showDiscordAccount() {
         this.content.empty().append(
-            el(".discord-user", Game.current.user?.username),
+            el(".discord-user", Game.current.discordUser?.username),
         );
-        this.step = 1;
+        this.steps = 1;
         this.continueButton.deleteClass("off");
         this.dot1.addClass("on");
         this.dot2.deleteClass("on");
@@ -72,7 +73,7 @@ export default class Enter extends GameNode {
             }),
         );
         Wallet.on("connect", this.connectWalletHandler);
-        this.step = 2;
+        this.steps = 2;
         this.continueButton.addClass("off");
         this.dot1.deleteClass("on");
         this.dot2.addClass("on");
@@ -87,7 +88,7 @@ export default class Enter extends GameNode {
         this.content.empty().append(
             el(".address", CommonUtil.shortenAddress(address === undefined ? "" : address)),
         );
-        this.step = 3;
+        this.steps = 3;
         this.continueButton.deleteClass("off");
         this.dot1.deleteClass("on");
         this.dot2.addClass("on");

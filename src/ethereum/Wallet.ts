@@ -110,6 +110,23 @@ class Wallet extends EventContainer {
         }
     }
 
+    public async signMessage(message: string) {
+        const address = await this.loadAddress();
+        let signedMessage;
+        if (this.existsInjectedProvider === true) {
+            signedMessage = await this.ethereum.request({
+                method: "personal_sign",
+                params: [message, address],
+            });
+        } else {
+            signedMessage = await this.walletConnectProvider?.request({
+                method: "personal_sign",
+                params: [message, address],
+            });
+        }
+        return signedMessage;
+    }
+
     public async signTypedData(
         owner: string | undefined,
 

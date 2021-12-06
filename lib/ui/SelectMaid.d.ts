@@ -1,5 +1,7 @@
 import { GameNode } from "@hanul/skyengine";
 export default class SelectMaid extends GameNode {
-    constructor(x: number, y: number);
+    private content;
+    constructor();
+    private loadMaids;
 }
 //# sourceMappingURL=SelectMaid.d.ts.map

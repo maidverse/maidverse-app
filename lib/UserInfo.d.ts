@@ -1,7 +1,5 @@
 export default interface UserInfo {
-    id: string;
-    username: string;
-    avatar: string;
-    locale: string;
+    avatarChainId: number | undefined;
+    avatarId: number | undefined;
 }
 //# sourceMappingURL=UserInfo.d.ts.map

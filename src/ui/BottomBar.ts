@@ -1,6 +1,7 @@
 import { GameNode } from "@hanul/skyengine";
 import { el } from "@hanul/skynode";
 import Alert from "./dialogue/Alert";
+import SelectMaid from "./SelectMaid";
 
 export default class BottomBar extends GameNode {
 
@@ -16,6 +17,7 @@ export default class BottomBar extends GameNode {
             el("a",
                 el("img", { src: "/images/ui/maids.png", height: "29" }),
                 el("span", "Maids"),
+                { click: () => new SelectMaid() },
             ),
             el("a",
                 el("img", { src: "/images/ui/social.png", height: "34.5" }),

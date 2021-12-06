@@ -18,6 +18,7 @@ declare class Wallet extends EventContainer {
         symbol: string;
         decimals: number;
     }, rpc: string, blockExplorer?: string): Promise<void>;
+    signMessage(message: string): Promise<any>;
     signTypedData(owner: string | undefined, name: string, version: string, verifyingContract: string, Permit: {
         name: string;
         type: string;

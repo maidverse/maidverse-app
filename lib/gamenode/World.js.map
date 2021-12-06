@@ -1,0 +1,1 @@
+{"version":3,"file":"World.js","sourceRoot":"","sources":["../../src/gamenode/World.ts"],"names":[],"mappings":";;;;;AAAA,gDAA4C;AAC5C,gDAAwB;AAExB,MAAqB,KAAM,SAAQ,oBAAQ;IAEvC;QACI,KAAK,CAAC,CAAC,EAAE,CAAC,CAAC,CAAC;QACZ,IAAI,CAAC,KAAK,GAAG,GAAG,CAAC;QACjB,IAAI,CAAC,MAAM,CAAC,IAAI,aAAG,EAAE,CAAC,CAAC;IAC3B,CAAC;CACJ;AAPD,wBAOC"}

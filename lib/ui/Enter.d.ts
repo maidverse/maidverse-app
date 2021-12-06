@@ -4,7 +4,7 @@ export default class Enter extends GameNode {
     private continueButton;
     private dot1;
     private dot2;
-    private step;
+    private steps;
     constructor(discordAuthed: boolean);
     private showDiscordLogin;
     private showDiscordAccount;

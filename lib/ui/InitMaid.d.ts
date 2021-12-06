@@ -1,5 +1,7 @@
 import { GameNode } from "@hanul/skyengine";
 export default class InitMaid extends GameNode {
-    constructor(x: number, y: number);
+    private content;
+    constructor();
+    private loadMaids;
 }
 //# sourceMappingURL=InitMaid.d.ts.map
