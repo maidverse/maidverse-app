@@ -2,12 +2,16 @@ import EventContainer from "eventcontainer";
 
 export default class WebSocketClient extends EventContainer {
 
-    private webSocket: WebSocket;
+    private webSocket!: WebSocket;
     private sendKey: number = 0;
 
-    constructor(url: string) {
+    constructor(private url: string) {
         super();
-        this.webSocket = new WebSocket(url);
+        this.reconnect();
+    }
+
+    public reconnect() {
+        this.webSocket = new WebSocket(this.url);
         this.webSocket.onopen = () => this.fireEvent("connect");
         this.webSocket.onmessage = (e) => {
             const data = JSON.parse(e.data);
@@ -16,12 +20,10 @@ export default class WebSocketClient extends EventContainer {
         this.webSocket.onclose = () => this.fireEvent("disconnect");
     }
 
-    public send(method: string, ...params: any[]): void {
-        if (typeof params[params.length - 1] === "function") {
-            const callback = params.pop();
-            this.on(`__callback_${this.sendKey}`, callback);
-        }
+    public async send(method: string, ...params: any[]): Promise<any> {
         this.webSocket.send(JSON.stringify({ method, params, __send_key: this.sendKey }));
+        const callbackName = `__callback_${this.sendKey}`;
         this.sendKey += 1;
+        return new Promise((resolve) => this.on(callbackName, resolve));
     }
 }

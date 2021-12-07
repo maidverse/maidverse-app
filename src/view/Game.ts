@@ -17,6 +17,7 @@ export default class Game implements View {
 
     public static current: Game;
     public screen: Fullscreen;
+    public world: World;
 
     private socialButton: SocialPanel | undefined;
     private userPanel: UserPanel | undefined;
@@ -33,11 +34,11 @@ export default class Game implements View {
 
         this.screen.root.append(
             this.socialButton = new SocialPanel(),
-            new World(),
+            this.world = new World(),
         );
         this.repositeUI();
 
-        this.checkDiscordLogin();
+        this.world.on("connect", () => this.checkDiscordLogin());
         window.addEventListener("resize", this.repositeUI);
     }
 
@@ -102,6 +103,7 @@ export default class Game implements View {
             } else {
                 this.screen.root.append(this.bottomBar = new BottomBar());
                 this.repositeUI();
+                this.world.enter(address);
             }
         } catch (error) {
             console.error(error);

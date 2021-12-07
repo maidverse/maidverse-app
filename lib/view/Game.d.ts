@@ -1,10 +1,12 @@
 import { Fullscreen } from "@hanul/skyengine";
 import { View, ViewParams } from "skyrouter";
 import DiscordUserInfo from "../DiscordUserInfo";
+import World from "../gamenode/World";
 import UserInfo from "../UserInfo";
 export default class Game implements View {
     static current: Game;
     screen: Fullscreen;
+    world: World;
     private socialButton;
     private userPanel;
     private bottomBar;

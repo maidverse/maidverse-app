@@ -4,13 +4,13 @@
         "webpack-prod": "webpack --mode production --config webpack.config.prod.js"
     },
     "dependencies": {
-        "@hanul/skynode": "^0.0.17",
+        "@hanul/skynode": "^0.1.0",
         "@hanul/waiter": "^0.0.1",
         "@sushiswap/sushi-data": "^1.0.26",
         "@types/superagent": "^4.1.12",
         "@walletconnect/web3-provider": "^1.4.1",
-        "@hanul/skyengine": "^0.0.5",
-        "eventcontainer": "^0.0.5",
+        "@hanul/skyengine": "^0.0.4",
+        "eventcontainer": "^0.0.6",
         "ethers": "^5.0.32",
         "less": "^4.1.1",
         "skyrouter": "^0.0.6",
