@@ -11,6 +11,7 @@ export default class World extends GameNode {
     private enterAvatar;
     private exitAvatar;
     private moveAvatar;
+    moveOrder(x: number, y: number): void;
     private showMessage;
     sendMessage(message: string): void;
 }

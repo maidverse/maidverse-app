@@ -15,13 +15,12 @@ export default class Avatar extends GameNode {
         }).appendTo(this);
         spine.animation = "idle";
         spine.skins = [
-            "clothes/1",
+            "costume/1",
             "eye/1",
             "hair/1",
             "headAcce/1",
             "skinColor/1",
         ];
-        spine.scale = 0.5;
         this.dom = el(".avatar-dom",
             el(".name", userAvatar.discordUsername),
         );

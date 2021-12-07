@@ -14,10 +14,7 @@ export default class World extends GameNode {
 
     constructor() {
         super(0, 0);
-        this.scale = 0.5;
         this.append(new Map());
-
-        //this.addTouchArea();
 
         this.client.on("connect", () => { this.loadAvatars(); this.fireEvent("connect"); });
         this.client.on("enterAvatar", (address, userAvatar) => this.enterAvatar(address, userAvatar));
@@ -63,6 +60,7 @@ export default class World extends GameNode {
 
     private enterAvatar(address: string, userAvatar: UserAvatar) {
         const avatar = this.createAvatar(address, userAvatar);
+        //TODO:
     }
 
     private exitAvatar(address: string) {
@@ -71,6 +69,15 @@ export default class World extends GameNode {
     }
 
     private moveAvatar(address: string, x: number, y: number) {
+        const avatar = this.avatars[address];
+        avatar?.move(x, y);
+    }
+
+    public moveOrder(x: number, y: number) {
+        if (this.walletAddress !== undefined) {
+            this.client.send("moveAvatar", x, y);
+            this.moveAvatar(this.walletAddress, x, y);
+        }
     }
 
     private showMessage(address: string, message: string) {
@@ -80,8 +87,8 @@ export default class World extends GameNode {
 
     public sendMessage(message: string) {
         if (this.walletAddress !== undefined) {
-            this.showMessage(this.walletAddress, message);
             this.client.send("sendMessage", message);
+            this.showMessage(this.walletAddress, message);
         }
     }
 }
