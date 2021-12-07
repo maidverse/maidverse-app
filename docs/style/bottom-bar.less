@@ -1,24 +1,57 @@
 .bottom-bar {
-    width              : 850px;
-    height             : 50px;
-    background-image   : url("/images/ui/bottom-bar.png");
-    background-size    : 850px 31.5px;
-    background-position: center bottom;
-    background-repeat  : no-repeat;
-    display            : flex;
-    justify-content    : center;
+    height: 90px;
 
-    >a {
-        margin         : 0 20px;
-        display        : flex;
-        flex-direction : column;
-        justify-content: end;
-        align-items    : center;
-        font-weight    : bold;
-        font-size      : 12px;
+    >.menu {
+        width              : 850px;
+        height             : 50px;
+        background-image   : url("/images/ui/bottom-bar.png");
+        background-size    : 850px 31.5px;
+        background-position: center bottom;
+        background-repeat  : no-repeat;
+        display            : flex;
+        justify-content    : center;
 
-        >span {
-            margin: 5px 0 10px;
+        >a {
+            margin         : 0 20px;
+            display        : flex;
+            flex-direction : column;
+            justify-content: end;
+            align-items    : center;
+            font-weight    : bold;
+            font-size      : 12px;
+
+            >span {
+                margin: 5px 0 10px;
+            }
+        }
+    }
+
+    >.chat-bar {
+        width           : 850px;
+        height          : 40px;
+        background-image: url("/images/ui/message-here.png");
+        background-size : contain;
+        display         : flex;
+        align-items     : center;
+
+        >a {
+            margin: 0 10px;
+        }
+
+        >input {
+            flex-grow       : 1;
+            height          : 100%;
+            background-color: transparent;
+        }
+
+        >.send-button {
+            width           : 61.5px;
+            height          : 31.5px;
+            background-image: url("/images/ui/send.png");
+            background-size : cover;
+            color           : #fff;
+            text-align      : center;
+            padding-top     : 6px;
         }
     }
 }

@@ -9,7 +9,7 @@ import Store from "../Store";
 import BottomBar from "../ui/BottomBar";
 import Enter from "../ui/Enter";
 import InitMaid from "../ui/InitMaid";
-import SocialButton from "../ui/SocialButton";
+import SocialPanel from "../ui/SocialPanel";
 import UserPanel from "../ui/UserPanel";
 import UserInfo from "../UserInfo";
 
@@ -18,7 +18,7 @@ export default class Game implements View {
     public static current: Game;
     public screen: Fullscreen;
 
-    private socialButton: SocialButton | undefined;
+    private socialButton: SocialPanel | undefined;
     private userPanel: UserPanel | undefined;
     private bottomBar: BottomBar | undefined;
 
@@ -32,7 +32,7 @@ export default class Game implements View {
         this.screen = new Fullscreen();
 
         this.screen.root.append(
-            this.socialButton = new SocialButton(),
+            this.socialButton = new SocialPanel(),
             new World(),
         );
         this.repositeUI();
@@ -113,6 +113,10 @@ export default class Game implements View {
         this.userPanel?.move(this.screen.centerX - 10, -this.screen.centerY + 10);
         this.bottomBar?.move(0, this.screen.centerY);
     };
+
+    public logoutFromDiscord() {
+        this.codeStore.delete("code");
+    }
 
     public changeParams(params: ViewParams, uri: string): void { }
 

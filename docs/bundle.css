@@ -169,6 +169,7 @@ input {
   font-family: bree !important;
 }
 a {
+  color: inherit;
   text-decoration: inherit;
 }
 body {
@@ -633,6 +634,9 @@ body {
   padding-bottom: 2px;
 }
 .bottom-bar {
+  height: 90px;
+}
+.bottom-bar > .menu {
   width: 850px;
   height: 50px;
   background-image: url("/images/ui/bottom-bar.png");
@@ -642,7 +646,7 @@ body {
   display: flex;
   justify-content: center;
 }
-.bottom-bar > a {
+.bottom-bar > .menu > a {
   margin: 0 20px;
   display: flex;
   flex-direction: column;
@@ -651,17 +655,100 @@ body {
   font-weight: bold;
   font-size: 12px;
 }
-.bottom-bar > a > span {
+.bottom-bar > .menu > a > span {
   margin: 5px 0 10px;
 }
-.user-panel > .connect-button {
-  display: block;
-  width: 85px;
-  height: 26.5px;
-  background-image: url("/images/ui/connect.png");
+.bottom-bar > .chat-bar {
+  width: 850px;
+  height: 40px;
+  background-image: url("/images/ui/message-here.png");
+  background-size: contain;
+  display: flex;
+  align-items: center;
+}
+.bottom-bar > .chat-bar > a {
+  margin: 0 10px;
+}
+.bottom-bar > .chat-bar > input {
+  flex-grow: 1;
+  height: 100%;
+  background-color: transparent;
+}
+.bottom-bar > .chat-bar > .send-button {
+  width: 61.5px;
+  height: 31.5px;
+  background-image: url("/images/ui/send.png");
   background-size: cover;
   color: #fff;
   text-align: center;
-  padding-top: 4px;
+  padding-top: 6px;
+}
+.social-panel {
+  position: relative;
+}
+.social-panel > .panel {
+  position: absolute;
+  left: -10px;
+  top: -10px;
+  padding: 10px;
+  width: 180.5px;
+  height: 241.5px;
+  background-image: url("/images/ui/top-popup.png");
+  background-size: cover;
+}
+.social-panel > .panel > .official-site-button {
+  margin: 16px auto;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/button-active.png");
+  background-size: cover;
+  color: #fff;
+  text-align: center;
+  padding-top: 6px;
+}
+.social-panel > .panel > .socials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.social-panel > .panel > .socials > a {
+  padding: 0 10px;
+}
+.user-panel {
+  position: relative;
+  width: 180.5px;
+}
+.user-panel > .profile,
+.user-panel > .panel > .profile {
+  display: flex;
+  justify-content: right;
+  align-items: center;
+}
+.user-panel > .profile > span,
+.user-panel > .panel > .profile > span {
+  margin-right: 10px;
+  color: #ff66bb;
+}
+.user-panel > .panel {
+  position: absolute;
+  right: -10px;
+  top: -10px;
+  padding: 10px;
+  width: 180.5px;
+  height: 241.5px;
+  background-image: url("/images/ui/top-popup.png");
+  background-size: cover;
+}
+.user-panel > .panel > .logout-button {
+  margin: 16px auto;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/button-white.png");
+  background-size: cover;
+  text-align: center;
+  padding-top: 6px;
+  color: #ff66bb;
 }
 

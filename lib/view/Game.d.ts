@@ -17,6 +17,7 @@ export default class Game implements View {
     loadUserPanel(address: string): Promise<void>;
     loadUser(address: string): Promise<void>;
     private repositeUI;
+    logoutFromDiscord(): void;
     changeParams(params: ViewParams, uri: string): void;
     close(): void;
 }
