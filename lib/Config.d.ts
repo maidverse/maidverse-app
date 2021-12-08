@@ -1,7 +1,6 @@
 declare const _default: {
     infuraId: any;
     backendHost: string;
-    discordOauth: string;
     chainId: number;
     endpoint: string;
     contracts: {

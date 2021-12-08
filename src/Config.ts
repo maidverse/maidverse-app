@@ -7,7 +7,6 @@ export default {
 
     // Mainnet
     backendHost: "api.maidverse.org",
-    discordOauth: "https://discord.com/api/oauth2/authorize?client_id=915530011212144661&redirect_uri=http%3A%2F%2Flocalhost%3A8413&response_type=code&scope=identify",
     chainId: 1,
     endpoint: `wss://mainnet.infura.io/ws/v3/${INFURA_ID}`,
     contracts: {
@@ -16,7 +15,6 @@ export default {
 
     // Testnet
     /*backendHost: "localhost:8079",
-    discordOauth: "https://discord.com/api/oauth2/authorize?client_id=915530011212144661&redirect_uri=http%3A%2F%2Flocalhost%3A8413&response_type=code&scope=identify",
     chainId: 3,
     endpoint: `wss://ropsten.infura.io/ws/v3/${INFURA_ID}`,
     contracts: {

@@ -47,7 +47,7 @@ export default class Enter extends GameNode {
     private showDiscordLogin() {
         this.content.empty().append(
             el("a.discord-login-button", "Login with Discord", {
-                href: Config.discordOauth,
+                href: `https://discord.com/api/oauth2/authorize?client_id=915530011212144661&redirect_uri=${encodeURIComponent(`${window.location.protocol}//${window.location.host}`)}&response_type=code&scope=identify`,
             }),
         );
         this.steps = 0;
