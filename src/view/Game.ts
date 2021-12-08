@@ -1,4 +1,4 @@
-import { Fullscreen } from "@hanul/skyengine";
+import { FixedNode, Fullscreen } from "@hanul/skyengine";
 import { View, ViewParams } from "skyrouter";
 import superagent from "superagent";
 import Config from "../Config";
@@ -18,6 +18,7 @@ export default class Game implements View {
     public static current: Game;
     public screen: Fullscreen;
     public world: World;
+    public ui: FixedNode;
 
     private socialButton: SocialPanel | undefined;
     private userPanel: UserPanel | undefined;
@@ -35,9 +36,10 @@ export default class Game implements View {
         });
 
         this.screen.root.append(
-            this.socialButton = new SocialPanel(),
             this.world = new World(),
+            this.ui = new FixedNode(0, 0),
         );
+        this.ui.append(this.socialButton = new SocialPanel());
         this.repositeUI();
 
         this.world.on("connect", () => this.checkDiscordLogin());
@@ -67,7 +69,7 @@ export default class Game implements View {
 
         if (code === undefined) {
             this.codeStore.delete("code");
-            this.screen.root.append(new Enter(false));
+            this.ui.append(new Enter(false));
         } else {
             try {
                 const result = await superagent.get(`https://${Config.backendHost}/discord/me`).query({ code });
@@ -76,14 +78,14 @@ export default class Game implements View {
             } catch (error) {
                 console.error(error);
                 this.codeStore.delete("code");
-                this.screen.root.append(new Enter(false));
+                this.ui.append(new Enter(false));
             }
         }
     }
 
     private async checkWalletConnected() {
         if (await Wallet.connected() !== true) {
-            this.screen.root.append(new Enter(true));
+            this.ui.append(new Enter(true));
         } else {
             const address = await Wallet.loadAddress();
             this.loadUserPanel(address!);
@@ -91,7 +93,7 @@ export default class Game implements View {
     }
 
     public async loadUserPanel(address: string) {
-        this.screen.root.append(this.userPanel = new UserPanel());
+        this.ui.append(this.userPanel = new UserPanel());
         this.repositeUI();
         this.loadUser(address);
     }
@@ -103,7 +105,7 @@ export default class Game implements View {
             if (this.user.avatarChainId === undefined || this.user.avatarId === undefined) {
                 new InitMaid();
             } else {
-                this.screen.root.append(this.bottomBar = new BottomBar());
+                this.ui.append(this.bottomBar = new BottomBar());
                 this.repositeUI();
                 this.world.enter(address);
             }

@@ -647,7 +647,7 @@ body {
 .avatar-dom > .message {
   position: absolute;
   left: -50px;
-  bottom: 110px;
+  bottom: 114px;
   width: 100px;
   font-size: 12px;
   border: 1px solid #0e0000;
@@ -655,6 +655,31 @@ body {
   text-align: center;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.8);
+  word-break: break-all;
+}
+.avatar-dom > .message:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #000000;
+  border-bottom: 4px solid transparent;
+  right: calc(50% - 2px);
+  bottom: -8.5px;
+}
+.avatar-dom > .message:after {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 4px solid #fff;
+  border-bottom: 4px solid transparent;
+  right: calc(50% - 2px);
+  bottom: -7.5px;
 }
 .bottom-bar {
   width: 100%;

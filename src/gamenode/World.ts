@@ -32,7 +32,8 @@ export default class World extends GameNode {
         if (Game.current.discordUser !== undefined) {
             this.walletAddress = address;
             const userAvatar = await this.client.send("enter", address, Game.current.discordUser.id);
-            this.enterAvatar(address, userAvatar);
+            const avatar = this.enterAvatar(address, userAvatar);
+            Game.current.screen.camera.target = avatar;
         }
     }
 
@@ -60,7 +61,8 @@ export default class World extends GameNode {
 
     private enterAvatar(address: string, userAvatar: UserAvatar) {
         const avatar = this.createAvatar(address, userAvatar);
-        //TODO:
+        avatar.birth();
+        return avatar;
     }
 
     private exitAvatar(address: string) {

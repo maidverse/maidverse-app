@@ -1,4 +1,4 @@
-import { GameNode, ImageNode, SpineNode } from "@hanul/skyengine";
+import { Delay, GameNode, ImageNode, SpineNode } from "@hanul/skyengine";
 import { DomNode, el } from "@hanul/skynode";
 import UserAvatar from "../UserAvatar";
 
@@ -6,6 +6,7 @@ export default class Avatar extends GameNode {
 
     private spine: SpineNode;
     private message: DomNode | undefined;
+    private messageDelay: Delay | undefined;
 
     constructor(userAvatar: UserAvatar) {
         super(userAvatar.x, userAvatar.y);
@@ -30,10 +31,22 @@ export default class Avatar extends GameNode {
         this.dom = el(".avatar-dom",
             el(".name", userAvatar.discordUsername),
         );
+
+        this.spine.on("animationend", () => {
+            if (this.spine.animation === "birth") {
+                this.spine.animation = "idle";
+            }
+        });
+    }
+
+    public birth() {
+        this.spine.animation = "birth";
     }
 
     public moveTo(x: number, y: number) {
-        this.spine.animation = "walk";
+        if (this.spine.animation !== "walk") {
+            this.spine.animation = "walk";
+        }
         if (this.x < x) {
             this.spine.scaleX = 1;
         } else {
@@ -45,10 +58,13 @@ export default class Avatar extends GameNode {
     }
 
     public showMessage(message: string) {
+
         this.message?.delete();
         this.message = el(".message", message);
         this.message.on("delete", () => this.message = undefined);
         this.dom?.append(this.message);
-        this.delay(() => this.message?.delete(), 3000);
+
+        this.messageDelay?.delete();
+        this.messageDelay = new Delay(this, () => this.message?.delete(), 3000);
     }
 }
