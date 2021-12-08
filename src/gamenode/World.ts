@@ -41,6 +41,7 @@ export default class World extends GameNode {
         this.avatars[address]?.delete();
         const avatar = new Avatar(userAvatar).appendTo(this);;
         this.avatars[address] = avatar;
+        avatar.on("delete", () => delete this.avatars[address]);
         return avatar;
     }
 

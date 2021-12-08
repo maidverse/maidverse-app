@@ -35,7 +35,10 @@ export default class BottomBar extends GameNode {
                 ),
             ),
             el(".chat-bar",
-                el("a.emoticon-button", el("img", { src: "/images/ui/emoticon.png", height: "30" })),
+                el("a.emoticon-button",
+                    el("img", { src: "/images/ui/emoticon.png", height: "30" }),
+                    { click: () => new Alert("Emoji", "Emoji is a work in Progress") },
+                ),
                 this.input = el("input", { placeholder: "Type your message here." }, {
                     keyup: (event: KeyboardEvent, input) => {
                         if (event.key === "Enter") {

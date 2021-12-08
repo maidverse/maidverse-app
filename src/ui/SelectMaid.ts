@@ -30,7 +30,7 @@ export default class SelectMaid extends GameNode {
         ));
 
         const address = await Wallet.loadAddress();
-        const result = await superagent.get(`https://${Config.backendHost}/avatars`).query({ address });
+        const result = await superagent.get(`https://${Config.backendHost}/game/avatars`).query({ address });
         const all = result.body;
 
         const list = el(".avatars");
