@@ -44,16 +44,20 @@ export default class Avatar extends GameNode {
         this.spine.animation = "birth";
     }
 
+    public dance() {
+        this.spine.animation = "dance";
+    }
+
     public moveTo(x: number, y: number) {
-        if (this.spine.animation !== "walk") {
-            this.spine.animation = "walk";
+        if (this.spine.animation !== "run") {
+            this.spine.animation = "run";
         }
         if (this.x < x) {
             this.spine.scaleX = 1;
         } else {
             this.spine.scaleX = -1;
         }
-        super.moveTo(x, y, 0.18, () => {
+        super.moveTo(x, y, 0.27, () => {
             this.spine.animation = "idle";
         });
     }
@@ -66,6 +70,10 @@ export default class Avatar extends GameNode {
         this.dom?.append(this.message);
 
         this.messageDelay?.delete();
-        this.messageDelay = new Delay(this, () => this.message?.delete(), 3000);
+        this.messageDelay = new Delay(this, () => this.message?.delete(), 5000);
+
+        if (message === "/dance") {
+            this.dance();
+        }
     }
 }

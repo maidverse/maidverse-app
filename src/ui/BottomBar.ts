@@ -51,6 +51,12 @@ export default class BottomBar extends GameNode {
                 }),
             ),
         );
+
+        window.addEventListener("keyup", (event) => {
+            if (event.key === "Enter") {
+                this.input.domElement.focus();
+            }
+        });
     }
 
     private sendMessage() {

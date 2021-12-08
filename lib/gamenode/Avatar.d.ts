@@ -6,6 +6,7 @@ export default class Avatar extends GameNode {
     private messageDelay;
     constructor(userAvatar: UserAvatar);
     birth(): void;
+    dance(): void;
     moveTo(x: number, y: number): void;
     showMessage(message: string): void;
 }
