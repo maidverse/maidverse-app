@@ -10,6 +10,7 @@ export default class Avatar extends GameNode {
 
     constructor(userAvatar: UserAvatar) {
         super(userAvatar.x, userAvatar.y);
+        this.yToZ = true;
 
         const shadow = new ImageNode(0, 0, "/images/avatar/shadow.png").appendTo(this);
         shadow.scale = 0.5;

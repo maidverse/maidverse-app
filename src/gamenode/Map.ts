@@ -7,6 +7,7 @@ export default class Map extends ImageNode {
         super(0, 0, "/images/cafe-back.png");
         this.centerY = 210 / 2;
         this.scale = 0.5;
+        this.z = -999999;
 
         this.addTouchArea(new Polygon(0, 210 / 2, [
             { x: 0, y: -545.5 },
