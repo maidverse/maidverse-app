@@ -37,6 +37,7 @@ export default class InitMaid extends GameNode {
                 el("a.mint-button",
                     el("img", { src: "/images/ui/select-maid/mint-icon.png", height: "25.5" }),
                     el("span", "Mint a Maid"),
+                    { href: "https://airdrops.levxdao.org/", target: "_blank" },
                 ),
                 el("a.reload-button", "Reload Maids", { click: () => this.loadMaids() }),
             ));
