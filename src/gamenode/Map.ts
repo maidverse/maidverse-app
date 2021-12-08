@@ -1,7 +1,7 @@
-import { Image, Polygon } from "@hanul/skyengine";
+import { ImageNode, Polygon } from "@hanul/skyengine";
 import Game from "../view/Game";
 
-export default class Map extends Image {
+export default class Map extends ImageNode {
 
     constructor() {
         super(0, 0, "/images/cafe-back.png");

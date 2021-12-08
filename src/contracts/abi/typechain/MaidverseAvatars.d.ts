@@ -32,9 +32,11 @@ interface MaidverseAvatarsInterface extends ethers.utils.Interface {
     "feeReceiver()": FunctionFragment;
     "getApproved(uint256)": FunctionFragment;
     "isApprovedForAll(address,address)": FunctionFragment;
+    "isBatchMinter(address)": FunctionFragment;
     "isMinter(address)": FunctionFragment;
     "mint(address)": FunctionFragment;
     "mintBatch(uint256)": FunctionFragment;
+    "mintBatchMulti(uint256,address[])": FunctionFragment;
     "name()": FunctionFragment;
     "nonces(uint256)": FunctionFragment;
     "noncesForAll(address)": FunctionFragment;
@@ -48,7 +50,7 @@ interface MaidverseAvatarsInterface extends ethers.utils.Interface {
     "setApprovalForAll(address,bool)": FunctionFragment;
     "setBaseURI(string)": FunctionFragment;
     "setContractURI(string)": FunctionFragment;
-    "setMinter(address,bool)": FunctionFragment;
+    "setMinter(address,bool,uint8)": FunctionFragment;
     "setRoyaltyInfo(address,uint256)": FunctionFragment;
     "supportsInterface(bytes4)": FunctionFragment;
     "symbol()": FunctionFragment;
@@ -94,11 +96,19 @@ interface MaidverseAvatarsInterface extends ethers.utils.Interface {
     functionFragment: "isApprovedForAll",
     values: [string, string]
   ): string;
+  encodeFunctionData(
+    functionFragment: "isBatchMinter",
+    values: [string]
+  ): string;
   encodeFunctionData(functionFragment: "isMinter", values: [string]): string;
   encodeFunctionData(functionFragment: "mint", values: [string]): string;
   encodeFunctionData(
     functionFragment: "mintBatch",
     values: [BigNumberish]
+  ): string;
+  encodeFunctionData(
+    functionFragment: "mintBatchMulti",
+    values: [BigNumberish, string[]]
   ): string;
   encodeFunctionData(functionFragment: "name", values?: undefined): string;
   encodeFunctionData(
@@ -152,7 +162,7 @@ interface MaidverseAvatarsInterface extends ethers.utils.Interface {
   ): string;
   encodeFunctionData(
     functionFragment: "setMinter",
-    values: [string, boolean]
+    values: [string, boolean, BigNumberish]
   ): string;
   encodeFunctionData(
     functionFragment: "setRoyaltyInfo",
@@ -219,9 +229,17 @@ interface MaidverseAvatarsInterface extends ethers.utils.Interface {
     functionFragment: "isApprovedForAll",
     data: BytesLike
   ): Result;
+  decodeFunctionResult(
+    functionFragment: "isBatchMinter",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "isMinter", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "mint", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "mintBatch", data: BytesLike): Result;
+  decodeFunctionResult(
+    functionFragment: "mintBatchMulti",
+    data: BytesLike
+  ): Result;
   decodeFunctionResult(functionFragment: "name", data: BytesLike): Result;
   decodeFunctionResult(functionFragment: "nonces", data: BytesLike): Result;
   decodeFunctionResult(
@@ -290,6 +308,7 @@ interface MaidverseAvatarsInterface extends ethers.utils.Interface {
     "ApprovalForAll(address,address,bool)": EventFragment;
     "OwnershipTransferred(address,address)": EventFragment;
     "SetBaseURI(string)": EventFragment;
+    "SetBatchMinter(address,bool)": EventFragment;
     "SetContractURI(string)": EventFragment;
     "SetMinter(address,bool)": EventFragment;
     "SetRoyaltyInfo(address,uint256)": EventFragment;
@@ -300,6 +319,7 @@ interface MaidverseAvatarsInterface extends ethers.utils.Interface {
   getEvent(nameOrSignatureOrTopic: "ApprovalForAll"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "OwnershipTransferred"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SetBaseURI"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "SetBatchMinter"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SetContractURI"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SetMinter"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SetRoyaltyInfo"): EventFragment;
@@ -385,6 +405,13 @@ export class MaidverseAvatars extends Contract {
       overrides?: CallOverrides
     ): Promise<[boolean]>;
 
+    isBatchMinter(arg0: string, overrides?: CallOverrides): Promise<[boolean]>;
+
+    "isBatchMinter(address)"(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<[boolean]>;
+
     isMinter(arg0: string, overrides?: CallOverrides): Promise<[boolean]>;
 
     "isMinter(address)"(
@@ -400,12 +427,24 @@ export class MaidverseAvatars extends Contract {
     ): Promise<ContractTransaction>;
 
     mintBatch(
-      limit: BigNumberish,
+      amounts: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
     "mintBatch(uint256)"(
-      limit: BigNumberish,
+      amounts: BigNumberish,
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    mintBatchMulti(
+      amounts: BigNumberish,
+      recipients: string[],
+      overrides?: Overrides
+    ): Promise<ContractTransaction>;
+
+    "mintBatchMulti(uint256,address[])"(
+      amounts: BigNumberish,
+      recipients: string[],
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -551,12 +590,14 @@ export class MaidverseAvatars extends Contract {
     setMinter(
       target: string,
       _isMinter: boolean,
+      minterType: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
-    "setMinter(address,bool)"(
+    "setMinter(address,bool,uint8)"(
       target: string,
       _isMinter: boolean,
+      minterType: BigNumberish,
       overrides?: Overrides
     ): Promise<ContractTransaction>;
 
@@ -712,6 +753,13 @@ export class MaidverseAvatars extends Contract {
     overrides?: CallOverrides
   ): Promise<boolean>;
 
+  isBatchMinter(arg0: string, overrides?: CallOverrides): Promise<boolean>;
+
+  "isBatchMinter(address)"(
+    arg0: string,
+    overrides?: CallOverrides
+  ): Promise<boolean>;
+
   isMinter(arg0: string, overrides?: CallOverrides): Promise<boolean>;
 
   "isMinter(address)"(
@@ -727,12 +775,24 @@ export class MaidverseAvatars extends Contract {
   ): Promise<ContractTransaction>;
 
   mintBatch(
-    limit: BigNumberish,
+    amounts: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
   "mintBatch(uint256)"(
-    limit: BigNumberish,
+    amounts: BigNumberish,
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  mintBatchMulti(
+    amounts: BigNumberish,
+    recipients: string[],
+    overrides?: Overrides
+  ): Promise<ContractTransaction>;
+
+  "mintBatchMulti(uint256,address[])"(
+    amounts: BigNumberish,
+    recipients: string[],
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -875,12 +935,14 @@ export class MaidverseAvatars extends Contract {
   setMinter(
     target: string,
     _isMinter: boolean,
+    minterType: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
-  "setMinter(address,bool)"(
+  "setMinter(address,bool,uint8)"(
     target: string,
     _isMinter: boolean,
+    minterType: BigNumberish,
     overrides?: Overrides
   ): Promise<ContractTransaction>;
 
@@ -1033,6 +1095,13 @@ export class MaidverseAvatars extends Contract {
       overrides?: CallOverrides
     ): Promise<boolean>;
 
+    isBatchMinter(arg0: string, overrides?: CallOverrides): Promise<boolean>;
+
+    "isBatchMinter(address)"(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<boolean>;
+
     isMinter(arg0: string, overrides?: CallOverrides): Promise<boolean>;
 
     "isMinter(address)"(
@@ -1044,10 +1113,22 @@ export class MaidverseAvatars extends Contract {
 
     "mint(address)"(to: string, overrides?: CallOverrides): Promise<BigNumber>;
 
-    mintBatch(limit: BigNumberish, overrides?: CallOverrides): Promise<void>;
+    mintBatch(amounts: BigNumberish, overrides?: CallOverrides): Promise<void>;
 
     "mintBatch(uint256)"(
-      limit: BigNumberish,
+      amounts: BigNumberish,
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    mintBatchMulti(
+      amounts: BigNumberish,
+      recipients: string[],
+      overrides?: CallOverrides
+    ): Promise<void>;
+
+    "mintBatchMulti(uint256,address[])"(
+      amounts: BigNumberish,
+      recipients: string[],
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1184,12 +1265,14 @@ export class MaidverseAvatars extends Contract {
     setMinter(
       target: string,
       _isMinter: boolean,
+      minterType: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
-    "setMinter(address,bool)"(
+    "setMinter(address,bool,uint8)"(
       target: string,
       _isMinter: boolean,
+      minterType: BigNumberish,
       overrides?: CallOverrides
     ): Promise<void>;
 
@@ -1297,6 +1380,11 @@ export class MaidverseAvatars extends Contract {
 
     SetBaseURI(uri: null): EventFilter;
 
+    SetBatchMinter(
+      target: string | null,
+      isBatchMinter: boolean | null
+    ): EventFilter;
+
     SetContractURI(uri: null): EventFilter;
 
     SetMinter(target: string | null, isMinter: boolean | null): EventFilter;
@@ -1376,6 +1464,13 @@ export class MaidverseAvatars extends Contract {
       overrides?: CallOverrides
     ): Promise<BigNumber>;
 
+    isBatchMinter(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
+
+    "isBatchMinter(address)"(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<BigNumber>;
+
     isMinter(arg0: string, overrides?: CallOverrides): Promise<BigNumber>;
 
     "isMinter(address)"(
@@ -1387,10 +1482,22 @@ export class MaidverseAvatars extends Contract {
 
     "mint(address)"(to: string, overrides?: Overrides): Promise<BigNumber>;
 
-    mintBatch(limit: BigNumberish, overrides?: Overrides): Promise<BigNumber>;
+    mintBatch(amounts: BigNumberish, overrides?: Overrides): Promise<BigNumber>;
 
     "mintBatch(uint256)"(
-      limit: BigNumberish,
+      amounts: BigNumberish,
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    mintBatchMulti(
+      amounts: BigNumberish,
+      recipients: string[],
+      overrides?: Overrides
+    ): Promise<BigNumber>;
+
+    "mintBatchMulti(uint256,address[])"(
+      amounts: BigNumberish,
+      recipients: string[],
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1526,12 +1633,14 @@ export class MaidverseAvatars extends Contract {
     setMinter(
       target: string,
       _isMinter: boolean,
+      minterType: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
-    "setMinter(address,bool)"(
+    "setMinter(address,bool,uint8)"(
       target: string,
       _isMinter: boolean,
+      minterType: BigNumberish,
       overrides?: Overrides
     ): Promise<BigNumber>;
 
@@ -1699,6 +1808,16 @@ export class MaidverseAvatars extends Contract {
       overrides?: CallOverrides
     ): Promise<PopulatedTransaction>;
 
+    isBatchMinter(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
+    "isBatchMinter(address)"(
+      arg0: string,
+      overrides?: CallOverrides
+    ): Promise<PopulatedTransaction>;
+
     isMinter(
       arg0: string,
       overrides?: CallOverrides
@@ -1717,12 +1836,24 @@ export class MaidverseAvatars extends Contract {
     ): Promise<PopulatedTransaction>;
 
     mintBatch(
-      limit: BigNumberish,
+      amounts: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
     "mintBatch(uint256)"(
-      limit: BigNumberish,
+      amounts: BigNumberish,
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    mintBatchMulti(
+      amounts: BigNumberish,
+      recipients: string[],
+      overrides?: Overrides
+    ): Promise<PopulatedTransaction>;
+
+    "mintBatchMulti(uint256,address[])"(
+      amounts: BigNumberish,
+      recipients: string[],
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
@@ -1870,12 +2001,14 @@ export class MaidverseAvatars extends Contract {
     setMinter(
       target: string,
       _isMinter: boolean,
+      minterType: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 
-    "setMinter(address,bool)"(
+    "setMinter(address,bool,uint8)"(
       target: string,
       _isMinter: boolean,
+      minterType: BigNumberish,
       overrides?: Overrides
     ): Promise<PopulatedTransaction>;
 

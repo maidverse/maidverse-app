@@ -70,7 +70,7 @@ export default class World extends GameNode {
 
     private moveAvatar(address: string, x: number, y: number) {
         const avatar = this.avatars[address];
-        avatar?.move(x, y);
+        avatar?.moveTo(x, y);
     }
 
     public moveOrder(x: number, y: number) {

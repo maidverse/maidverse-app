@@ -241,6 +241,7 @@ interface IMaidverseAvatarsInterface extends ethers.utils.Interface {
     "Approval(address,address,uint256)": EventFragment;
     "ApprovalForAll(address,address,bool)": EventFragment;
     "SetBaseURI(string)": EventFragment;
+    "SetBatchMinter(address,bool)": EventFragment;
     "SetContractURI(string)": EventFragment;
     "SetMinter(address,bool)": EventFragment;
     "SetRoyaltyInfo(address,uint256)": EventFragment;
@@ -250,6 +251,7 @@ interface IMaidverseAvatarsInterface extends ethers.utils.Interface {
   getEvent(nameOrSignatureOrTopic: "Approval"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "ApprovalForAll"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SetBaseURI"): EventFragment;
+  getEvent(nameOrSignatureOrTopic: "SetBatchMinter"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SetContractURI"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SetMinter"): EventFragment;
   getEvent(nameOrSignatureOrTopic: "SetRoyaltyInfo"): EventFragment;
@@ -1067,6 +1069,11 @@ export class IMaidverseAvatars extends Contract {
     ): EventFilter;
 
     SetBaseURI(uri: null): EventFilter;
+
+    SetBatchMinter(
+      target: string | null,
+      isBatchMinter: boolean | null
+    ): EventFilter;
 
     SetContractURI(uri: null): EventFilter;
 

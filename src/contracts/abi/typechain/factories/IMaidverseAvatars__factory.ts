@@ -84,6 +84,25 @@ const _abi = [
     anonymous: false,
     inputs: [
       {
+        indexed: true,
+        internalType: "address",
+        name: "target",
+        type: "address",
+      },
+      {
+        indexed: true,
+        internalType: "bool",
+        name: "isBatchMinter",
+        type: "bool",
+      },
+    ],
+    name: "SetBatchMinter",
+    type: "event",
+  },
+  {
+    anonymous: false,
+    inputs: [
+      {
         indexed: false,
         internalType: "string",
         name: "uri",

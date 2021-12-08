@@ -30,7 +30,9 @@ export default class Game implements View {
 
     constructor() {
         Game.current = this;
-        this.screen = new Fullscreen();
+        this.screen = new Fullscreen({
+            antialias: true,
+        });
 
         this.screen.root.append(
             this.socialButton = new SocialPanel(),
