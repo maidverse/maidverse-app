@@ -6,8 +6,8 @@ export default {
     infuraId: INFURA_ID,
 
     // Mainnet
-    backendHost: "localhost:8079",
-    //backendHost: "api.maidverse.org",
+    //backendHost: "localhost:8079",
+    backendHost: "api.maidverse.org",
     chainId: 1,
     endpoint: `wss://mainnet.infura.io/ws/v3/${INFURA_ID}`,
     contracts: {
