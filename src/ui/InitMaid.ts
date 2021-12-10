@@ -15,7 +15,7 @@ export default class InitMaid extends GameNode {
             el("h1", "Select maid avatar"),
             this.content = el(".content"),
         );
-        Game.current.screen.root.append(this);
+        Game.current.ui.append(this);
         this.loadMaids();
     }
 

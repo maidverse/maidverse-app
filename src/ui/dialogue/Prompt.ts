@@ -26,6 +26,6 @@ export default class Prompt extends GameNode {
             }),
             el("a.cancel-button", "Cancel", { click: () => this.delete() }),
         );
-        Game.current.screen.root.append(this);
+        Game.current.ui.append(this);
     }
 }

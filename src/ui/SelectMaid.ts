@@ -20,7 +20,7 @@ export default class SelectMaid extends GameNode {
                 }),
             ),
         );
-        Game.current.screen.root.append(this);
+        Game.current.ui.append(this);
         this.loadMaids();
     }
 

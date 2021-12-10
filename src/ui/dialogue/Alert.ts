@@ -18,6 +18,6 @@ export default class Alert extends GameNode {
                 },
             }),
         );
-        Game.current.screen.root.append(this);
+        Game.current.ui.append(this);
     }
 }
