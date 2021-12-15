@@ -12,15 +12,23 @@ export default class World extends GameNode {
     private avatars: { [address: string]: Avatar } = {};
     private walletAddress: string | undefined;
 
+    public discordMessages: string[] = [];
+
     constructor() {
         super(0, 0);
         this.append(new Map());
 
-        this.client.on("connect", () => { this.loadAvatars(); this.fireEvent("connect"); });
+        this.client.on("connect", () => {
+            this.loadAvatars();
+            this.loadDiscordMessages();
+            this.fireEvent("connect");
+        });
+
         this.client.on("enterAvatar", (address, userAvatar) => this.enterAvatar(address, userAvatar));
         this.client.on("exitAvatar", (address) => this.exitAvatar(address));
         this.client.on("moveAvatar", (address, x, y) => this.moveAvatar(address, x, y));
         this.client.on("message", (address, message) => this.showMessage(address, message));
+        this.client.on("discordMessage", (message) => this.addDiscordMessage(message));
 
         this.client.on("disconnect", () => {
             console.log("disconnected.");
@@ -93,5 +101,15 @@ export default class World extends GameNode {
             this.client.send("sendMessage", message);
             this.showMessage(this.walletAddress, message);
         }
+    }
+
+    public async loadDiscordMessages() {
+        this.discordMessages = await this.client.send("loadDiscordMessages");
+        this.fireEvent("loadDiscordMessages");
+    }
+
+    private addDiscordMessage(message: string) {
+        this.discordMessages.push(message);
+        this.fireEvent("discordMessage", message);
     }
 }

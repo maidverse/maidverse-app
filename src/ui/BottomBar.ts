@@ -1,12 +1,14 @@
 import { GameNode } from "@hanul/skyengine";
 import { DomNode, el } from "@hanul/skynode";
 import Game from "../view/Game";
+import ChatHistory from "./ChatHistory";
 import Alert from "./dialogue/Alert";
 import SelectMaid from "./SelectMaid";
 
 export default class BottomBar extends GameNode {
 
     private input: DomNode<HTMLInputElement>;
+    private chatHistory: ChatHistory;
 
     constructor() {
         super(0, 0);
@@ -45,12 +47,20 @@ export default class BottomBar extends GameNode {
                             this.sendMessage();
                         }
                     },
+                    click: () => {
+                        this.chatHistory.show();
+                    }
                 }),
                 el("a.send-button", "SEND", {
                     click: () => this.sendMessage(),
                 }),
             ),
+            this.chatHistory = new ChatHistory(),
         );
+
+        this.chatHistory.hide();
+        this.dom.onDom("click", (event) => event.stopPropagation());
+        window.addEventListener("click", () => this.chatHistory.hide());
 
         window.addEventListener("keyup", (event) => {
             if (event.key === "Enter") {

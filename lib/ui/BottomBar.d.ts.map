@@ -1,1 +1,1 @@
-{"version":3,"file":"BottomBar.d.ts","sourceRoot":"","sources":["../../src/ui/BottomBar.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,kBAAkB,CAAC;AAM5C,MAAM,CAAC,OAAO,OAAO,SAAU,SAAQ,QAAQ;IAE3C,OAAO,CAAC,KAAK,CAA4B;;IAqDzC,OAAO,CAAC,WAAW;CAOtB"}
+{"version":3,"file":"BottomBar.d.ts","sourceRoot":"","sources":["../../src/ui/BottomBar.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,kBAAkB,CAAC;AAO5C,MAAM,CAAC,OAAO,OAAO,SAAU,SAAQ,QAAQ;IAE3C,OAAO,CAAC,KAAK,CAA4B;IACzC,OAAO,CAAC,WAAW,CAAc;;IA6DjC,OAAO,CAAC,WAAW;CAOtB"}
