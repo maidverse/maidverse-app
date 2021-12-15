@@ -17,5 +17,6 @@ export default class World extends GameNode {
     sendMessage(message: string): void;
     loadDiscordMessages(): Promise<void>;
     private addDiscordMessage;
+    private changeAvatar;
 }
 //# sourceMappingURL=World.d.ts.map

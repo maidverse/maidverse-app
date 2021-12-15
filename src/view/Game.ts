@@ -102,7 +102,11 @@ export default class Game implements View {
         try {
             const result = await superagent.get(`https://${Config.backendHost}/user`).query({ address });
             this.user = result.body as UserInfo;
-            if (this.user.avatarChainId === undefined || this.user.avatarId === undefined) {
+            if (
+                (this.user.avatarChainId === undefined || this.user.avatarId === undefined) &&
+                this.user.maidId === undefined &&
+                this.user.nurseId === undefined
+            ) {
                 new InitMaid();
             } else {
                 this.ui.append(this.bottomBar = new BottomBar());

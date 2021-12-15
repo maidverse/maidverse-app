@@ -29,6 +29,7 @@ export default class World extends GameNode {
         this.client.on("moveAvatar", (address, x, y) => this.moveAvatar(address, x, y));
         this.client.on("message", (address, message) => this.showMessage(address, message));
         this.client.on("discordMessage", (message) => this.addDiscordMessage(message));
+        this.client.on("changeAvatar", (address, id, type) => this.changeAvatar(address, id, type));
 
         this.client.on("disconnect", () => {
             console.log("disconnected.");
@@ -111,5 +112,10 @@ export default class World extends GameNode {
     private addDiscordMessage(message: string) {
         this.discordMessages.push(message);
         this.fireEvent("discordMessage", message);
+    }
+
+    private changeAvatar(address: string, id: number, type?: number) {
+        const avatar = this.avatars[address];
+        avatar?.changeSkin({ id, type });
     }
 }
