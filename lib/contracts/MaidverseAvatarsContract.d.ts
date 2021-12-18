@@ -1,5 +1,5 @@
 import { BigNumber } from "ethers";
-import { MaidverseAvatars } from "./abi/typechain";
+import { MaidverseAvatars } from "./abi/avatars/typechain";
 import ERC721Contract from "./standard/ERC721Contract";
 declare class MaidverseAvatarsContract extends ERC721Contract<MaidverseAvatars> {
     constructor();

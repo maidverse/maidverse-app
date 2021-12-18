@@ -1,7 +1,7 @@
 import { BigNumber } from "ethers";
 import Config from "../Config";
-import MaidverseAvatarsArtifact from "./abi/artifacts/contracts/MaidverseAvatars.sol/MaidverseAvatars.json";
-import { MaidverseAvatars } from "./abi/typechain";
+import MaidverseAvatarsArtifact from "./abi/avatars/artifacts/contracts/MaidverseAvatars.sol/MaidverseAvatars.json";
+import { MaidverseAvatars } from "./abi/avatars/typechain";
 import ERC721Contract from "./standard/ERC721Contract";
 
 class MaidverseAvatarsContract extends ERC721Contract<MaidverseAvatars> {
