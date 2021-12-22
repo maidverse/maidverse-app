@@ -86,6 +86,10 @@ export default class Avatar extends GameNode {
         this.spine.animation = "dance";
     }
 
+    public attack() {
+        this.spine.animation = "attack";
+    }
+
     public moveTo(x: number, y: number) {
         if (this.spine.animation !== "normalWalk") {
             this.spine.animation = "normalWalk";
@@ -146,6 +150,8 @@ export default class Avatar extends GameNode {
 
         if (message === "/dance") {
             this.dance();
+        } else if (message === "/attack") {
+            this.attack();
         }
     }
 }

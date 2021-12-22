@@ -11,6 +11,7 @@ export default class Avatar extends GameNode {
     changeSkin(avatar: Partial<AvatarInfo>): void;
     birth(): void;
     dance(): void;
+    attack(): void;
     moveTo(x: number, y: number): void;
     showMessage(message: string): void;
 }

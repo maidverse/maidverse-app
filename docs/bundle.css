@@ -469,6 +469,7 @@ body {
   text-align: center;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.8);
+  z-index: 1;
 }
 .bottom-bar {
   position: relative;
