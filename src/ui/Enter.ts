@@ -15,7 +15,7 @@ export default class Enter extends GameNode {
     constructor(discordAuthed: boolean) {
         super(0, 0);
         this.dom = el(".popup-background",
-            this.dom = el(".enter",
+            el(".enter",
                 el("header",
                     el("h1", "Welcome"),
                     el("p", "Discord login is required to enter Maidverse."),
