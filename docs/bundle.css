@@ -530,6 +530,7 @@ body {
   height: 200px;
   left: 0;
   bottom: 40px;
+  z-index: 2;
   overflow-y: scroll;
   background-color: rgba(0, 0, 0, 0.8);
   color: #fff;
