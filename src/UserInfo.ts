@@ -5,4 +5,5 @@ export default interface UserInfo {
     nurseId: number | undefined,
     x: number,
     y: number,
+    skin: any | undefined,
 }

@@ -1,7 +1,6 @@
 import { GameNode } from "@hanul/skyengine";
 import { DomNode, el } from "@hanul/skynode";
 import CommonUtil from "../CommonUtil";
-import Config from "../Config";
 import Wallet from "../ethereum/Wallet";
 import Game from "../view/Game";
 
@@ -15,29 +14,31 @@ export default class Enter extends GameNode {
 
     constructor(discordAuthed: boolean) {
         super(0, 0);
-        this.dom = el(".enter",
-            el("header",
-                el("h1", "Welcome"),
-                el("p", "Discord login is required to enter Maidverse."),
-            ),
-            //el("a.info-button", ),
-            this.content = el(".content"),
-            el("footer",
-                this.continueButton = el("a.continue-button", "Continue", {
-                    click: async () => {
-                        if (this.steps === 1) {
-                            this.showConnectWallet();
-                        }
-                        if (this.steps === 3) {
-                            this.delete();
-                            const address = await Wallet.loadAddress();
-                            Game.current.loadUserPanel(address!);
-                        }
-                    },
-                }),
-                el(".dots",
-                    this.dot1 = el(".dot"),
-                    this.dot2 = el(".dot"),
+        this.dom = el(".popup-background",
+            this.dom = el(".enter",
+                el("header",
+                    el("h1", "Welcome"),
+                    el("p", "Discord login is required to enter Maidverse."),
+                ),
+                //el("a.info-button", ),
+                this.content = el(".content"),
+                el("footer",
+                    this.continueButton = el("a.continue-button", "Continue", {
+                        click: async () => {
+                            if (this.steps === 1) {
+                                this.showConnectWallet();
+                            }
+                            if (this.steps === 3) {
+                                this.delete();
+                                const address = await Wallet.loadAddress();
+                                Game.current.loadUserPanel(address!);
+                            }
+                        },
+                    }),
+                    el(".dots",
+                        this.dot1 = el(".dot"),
+                        this.dot2 = el(".dot"),
+                    ),
                 ),
             ),
         );

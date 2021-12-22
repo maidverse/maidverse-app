@@ -11,9 +11,12 @@ export default class Avatar extends GameNode {
     private message: DomNode | undefined;
     private messageDelay: Delay | undefined;
 
-    constructor(userAvatar: UserAvatar) {
+    public skin;
+
+    constructor(private userAvatar: UserAvatar) {
         super(userAvatar.x, userAvatar.y);
         this.yToZ = true;
+        this.skin = userAvatar.avatar.skin;
 
         const shadow = new ImageNode(0, 0, "/images/avatar/shadow.png").appendTo(this);
         shadow.scale = 0.5;
@@ -31,15 +34,17 @@ export default class Avatar extends GameNode {
         });
     }
 
-    public changeSkin(avatar: AvatarInfo) {
+    public changeSkin(avatar: Partial<AvatarInfo>) {
         this.spine?.delete();
 
         if (avatar.type === -1) {
-            this.spine = new SpineNode(0, 0, {
-                json: `/images/avatar/${maids[avatar.id]}.json`,
-                atlas: `/images/avatar/${maids[avatar.id]}.atlas`,
-                png: `/images/avatar/${maids[avatar.id]}.png`,
-            }).appendTo(this);
+            if (avatar.id !== undefined) {
+                this.spine = new SpineNode(0, 0, {
+                    json: `/images/avatar/${maids[avatar.id]}.json`,
+                    atlas: `/images/avatar/${maids[avatar.id]}.atlas`,
+                    png: `/images/avatar/${maids[avatar.id]}.png`,
+                }).appendTo(this);
+            }
         }
 
         else if (avatar.type !== undefined) {
@@ -62,11 +67,11 @@ export default class Avatar extends GameNode {
             }).appendTo(this);
 
             this.spine.skins = [
-                "costume/1",
-                "eye/1",
-                "hair/1",
-                "headAcce/1",
-                "skinColor/1",
+                `costume/${avatar.skin?.costume !== undefined ? avatar.skin.costume : "eth"}`,
+                `eye/${avatar.skin?.eye !== undefined ? avatar.skin.eye : "eth"}`,
+                `hair/${avatar.skin?.hair !== undefined ? avatar.skin.hair : "eth"}`,
+                `headAcce/${avatar.skin?.headAcce !== undefined ? avatar.skin.headAcce : "eth"}`,
+                `skinColor/${avatar.skin?.skinColor !== undefined ? avatar.skin.skinColor : "eth"}`,
             ];
         }
 
@@ -99,8 +104,42 @@ export default class Avatar extends GameNode {
 
         this.message?.delete();
         this.message = el(".message", message);
+
+        if (this.userAvatar.balloonColor !== undefined) {
+            this.message.style({ backgroundColor: this.userAvatar.balloonColor });
+        }
+
         this.message.on("delete", () => this.message = undefined);
         this.dom?.append(this.message);
+        this.message.style({ left: -this.message.rect.width / 2 });
+
+        const before = el("").appendTo(this.message);
+        before.style({
+            content: "",
+            width: 0,
+            height: 0,
+            position: "absolute",
+            borderLeft: "4px solid transparent",
+            borderRight: "4px solid transparent",
+            borderTop: "4px solid #000000",
+            borderBottom: "4px solid transparent",
+            right: "calc(50% - 2px)",
+            bottom: -8.5,
+        });
+
+        const after = el("").appendTo(this.message);
+        after.style({
+            content: "",
+            width: 0,
+            height: 0,
+            position: "absolute",
+            borderLeft: "4px solid transparent",
+            borderRight: "4px solid transparent",
+            borderTop: `4px solid ${this.userAvatar.balloonColor !== undefined ? this.userAvatar.balloonColor : "#fff"}`,
+            borderBottom: "4px solid transparent",
+            right: "calc(50% - 2px)",
+            bottom: -7.5,
+        });
 
         this.messageDelay?.delete();
         this.messageDelay = new Delay(this, () => this.message?.delete(), 5000);

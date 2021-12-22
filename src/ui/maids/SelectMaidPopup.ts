@@ -1,25 +1,28 @@
 import { GameNode } from "@hanul/skyengine";
 import { DomNode, el } from "@hanul/skynode";
 import superagent from "superagent";
-import Config from "../Config";
-import Wallet from "../ethereum/Wallet";
-import Game from "../view/Game";
-import maids from "../maids.json";
-import nursetypes from "../nursetypes.json";
+import Config from "../../Config";
+import Wallet from "../../ethereum/Wallet";
+import maids from "../../maids.json";
+import nursetypes from "../../nursetypes.json";
+import Game from "../../view/Game";
+import MaidInfoPopup from "./MaidInfoPopup";
 
-export default class SelectMaid extends GameNode {
+export default class SelectMaidPopup extends GameNode {
 
     private content: DomNode;
 
     constructor() {
         super(0, 0);
-        this.dom = el(".select-maid",
-            el("h1", "Select maid avatar"),
-            this.content = el(".content"),
-            el("footer",
-                el("a.close-button", "Close", {
-                    click: () => this.delete(),
-                }),
+        this.dom = el(".popup-background",
+            el(".select-maid-popup",
+                el("h1", "Select maid avatar"),
+                this.content = el(".content"),
+                el("footer",
+                    el("a.close-button", "Close", {
+                        click: () => this.delete(),
+                    }),
+                ),
             ),
         );
         Game.current.ui.append(this);
@@ -44,7 +47,7 @@ export default class SelectMaid extends GameNode {
                     el("img", { src: "/images/avatar/png/avatar.png", height: "50" }),
                 ),
                 {
-                    click: async () => {
+                    click: () => new MaidInfoPopup("ethereum", avatar, async () => {
                         const message = "Select maid avatar";
                         const signedMessage = await Wallet.signMessage(message);
                         try {
@@ -71,7 +74,7 @@ export default class SelectMaid extends GameNode {
                         } catch (error) {
                             console.error(error);
                         }
-                    },
+                    }),
                 },
             ).appendTo(list);
 
@@ -91,7 +94,7 @@ export default class SelectMaid extends GameNode {
                     el("img", { src: `/images/avatar/png/${maids[avatar.id]}.png`, height: "50" }),
                 ),
                 {
-                    click: async () => {
+                    click: () => new MaidInfoPopup("maid", avatar, async () => {
                         const message = "Select maid avatar";
                         const signedMessage = await Wallet.signMessage(message);
                         try {
@@ -117,7 +120,7 @@ export default class SelectMaid extends GameNode {
                         } catch (error) {
                             console.error(error);
                         }
-                    },
+                    }),
                 },
             ).appendTo(list);
 
@@ -136,7 +139,7 @@ export default class SelectMaid extends GameNode {
                     el("img", { src: `/images/avatar/png/${nursetypes[avatar.type].skin.toLowerCase()}.png`, height: "50" }),
                 ),
                 {
-                    click: async () => {
+                    click: () => new MaidInfoPopup("nurse", avatar, async () => {
                         const message = "Select maid avatar";
                         const signedMessage = await Wallet.signMessage(message);
                         try {
@@ -162,7 +165,7 @@ export default class SelectMaid extends GameNode {
                         } catch (error) {
                             console.error(error);
                         }
-                    },
+                    }),
                 },
             ).appendTo(list);
 
@@ -175,6 +178,6 @@ export default class SelectMaid extends GameNode {
             }
         }
 
-        this.content.empty().append(list);
+        this.content.empty().append(el(".avatars-wrapper", list));
     }
 }

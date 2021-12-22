@@ -3,7 +3,8 @@ import { DomNode, el } from "@hanul/skynode";
 import Game from "../view/Game";
 import ChatHistory from "./ChatHistory";
 import Alert from "./dialogue/Alert";
-import SelectMaid from "./SelectMaid";
+import SelectMaidPopup from "./maids/SelectMaidPopup";
+import StorePopup from "./store/StorePopup";
 
 export default class BottomBar extends GameNode {
 
@@ -23,7 +24,7 @@ export default class BottomBar extends GameNode {
                 el("a",
                     el("img", { src: "/images/ui/maids.png", height: "29" }),
                     el("span", "Maids"),
-                    { click: () => new SelectMaid() },
+                    { click: () => new SelectMaidPopup() },
                 ),
                 el("a",
                     el("img", { src: "/images/ui/social.png", height: "34.5" }),
@@ -33,7 +34,7 @@ export default class BottomBar extends GameNode {
                 el("a",
                     el("img", { src: "/images/ui/shop.png", height: "40" }),
                     el("span", "Shop"),
-                    { click: () => new Alert("Shop", "Shop is a work in Progress") },
+                    { click: () => new StorePopup() },
                 ),
             ),
             el(".chat-bar",

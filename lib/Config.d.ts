@@ -5,6 +5,7 @@ declare const _default: {
     endpoint: string;
     contracts: {
         MaidverseAvatars: string;
+        ItemStore: string;
     };
 };
 export default _default;

@@ -1,3 +1,4 @@
+import Debouncer from "@hanul/debouncer";
 import { FixedNode, Fullscreen } from "@hanul/skyengine";
 import { View, ViewParams } from "skyrouter";
 import superagent from "superagent";
@@ -8,8 +9,9 @@ import World from "../gamenode/World";
 import Store from "../Store";
 import BottomBar from "../ui/BottomBar";
 import Enter from "../ui/Enter";
-import InitMaid from "../ui/InitMaid";
+import InitMaidPopup from "../ui/maids/InitMaidPopup";
 import SocialPanel from "../ui/SocialPanel";
+import ResultPopup from "../ui/store/ResultPopup";
 import UserPanel from "../ui/UserPanel";
 import UserInfo from "../UserInfo";
 
@@ -96,6 +98,7 @@ export default class Game implements View {
         this.ui.append(this.userPanel = new UserPanel());
         this.repositeUI();
         this.loadUser(address);
+        this.checkBuy(address);
     }
 
     public async loadUser(address: string) {
@@ -107,7 +110,7 @@ export default class Game implements View {
                 this.user.maidId === undefined &&
                 this.user.nurseId === undefined
             ) {
-                new InitMaid();
+                new InitMaidPopup();
             } else {
                 this.ui.append(this.bottomBar = new BottomBar());
                 this.repositeUI();
@@ -116,6 +119,24 @@ export default class Game implements View {
         } catch (error) {
             console.error(error);
         }
+    }
+
+    private checkBuyDebouncer: Debouncer = new Debouncer(100, (address) => this.checkBuy(address));
+
+    private async checkBuy(address: string) {
+        const code = this.codeStore.get("code");
+        if (code !== undefined) {
+            try {
+                const result = await superagent.get(`https://${Config.backendHost}/checkbuy`).query({ address, code });
+                if (result.body.length > 0) {
+                    new ResultPopup(result.body);
+                }
+            } catch (error) {
+                console.error(error);
+            }
+        }
+        // 15초마다 실행
+        setTimeout(() => this.checkBuyDebouncer.run(address), 15000);
     }
 
     private repositeUI = () => {

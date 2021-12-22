@@ -18,5 +18,6 @@ export default class World extends GameNode {
     loadDiscordMessages(): Promise<void>;
     private addDiscordMessage;
     private changeAvatar;
+    private changeSkin;
 }
 //# sourceMappingURL=World.d.ts.map

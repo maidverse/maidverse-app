@@ -5,5 +5,7 @@ export default interface UserAvatar {
     avatar: AvatarInfo;
     x: number;
     y: number;
+    balloonColor: string | undefined;
+    skin: any | undefined;
 }
 //# sourceMappingURL=UserAvatar.d.ts.map

@@ -19,6 +19,8 @@ export default class Game implements View {
     private checkWalletConnected;
     loadUserPanel(address: string): Promise<void>;
     loadUser(address: string): Promise<void>;
+    private checkBuyDebouncer;
+    private checkBuy;
     private repositeUI;
     logoutFromDiscord(): void;
     changeParams(params: ViewParams, uri: string): void;

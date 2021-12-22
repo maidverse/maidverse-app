@@ -1,0 +1,60 @@
+.store-popup {
+    width           : 350.5px;
+    height          : 542px;
+    margin          : auto;
+    background-image: url("/images/ui/popup-large.png");
+    background-size : cover;
+    color           : #663a3b;
+    position        : relative;
+    padding         : 20px 12px;
+
+    >header {
+        position      : relative;
+        padding-bottom: 20px;
+        border-bottom : 1px dashed #d4b7cb;
+
+        >h1 {
+            font-weight: bold;
+            text-align : center;
+        }
+
+        >.balance {
+            position   : absolute;
+            right      : 8px;
+            top        : 0;
+            display    : flex;
+            align-items: center;
+            color      : #627eea;
+            font-weight: bold;
+
+            >img {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    >.content {
+        margin-top: 12px;
+        height    : 410px;
+        overflow-y: auto;
+    }
+
+    >footer {
+        >.close-button {
+            margin          : auto;
+            margin-top      : 12px;
+            display         : block;
+            width           : 146px;
+            height          : 31.5px;
+            background-image: url("/images/ui/button-active.png");
+            background-size : cover;
+            color           : #fff;
+            font-size       : 12px;
+            font-weight     : bold;
+            display         : flex;
+            align-items     : center;
+            justify-content : center;
+            padding-bottom  : 2px;
+        }
+    }
+}

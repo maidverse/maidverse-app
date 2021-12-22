@@ -1,0 +1,110 @@
+.maid-info-popup {
+    width           : 350.5px;
+    height          : 542px;
+    margin          : auto;
+    background-image: url("/images/ui/popup-large.png");
+    background-size : cover;
+    color           : #663a3b;
+    position        : relative;
+    padding         : 20px;
+
+    >h1 {
+        font-weight   : bold;
+        text-align    : center;
+        padding-bottom: 20px;
+        border-bottom : 1px dashed #d4b7cb;
+    }
+
+    >.avatar {
+        position  : absolute;
+        left      : 0;
+        width     : 100%;
+        top       : 200px;
+        text-align: center;
+    }
+
+    >.slots {
+        >.slot {
+            position        : absolute;
+            width           : 64px;
+            height          : 64px;
+            background-image: url("/images/ui/select-maid/slot.png");
+            background-size : cover;
+            padding         : 8px;
+            display         : flex;
+            justify-content : center;
+            align-items     : center;
+
+            &.hair {
+                left: 40px;
+                top : 140px;
+            }
+
+            &.eye {
+                left: 40px;
+                top : 220px;
+            }
+
+            &.skin-color {
+                left: 40px;
+                top : 300px;
+            }
+
+            &.head-acce {
+                right: 40px;
+                top  : 160px;
+            }
+
+            &.costume {
+                right: 40px;
+                top  : 280px;
+            }
+
+            >img {
+                max-width : 100%;
+                max-height: 100%;
+            }
+        }
+    }
+
+    >footer {
+        position: absolute;
+        left    : 0;
+        bottom  : 0;
+        width   : 100%;
+        padding : 20px 38px;
+
+        >.select-button {
+            margin          : auto;
+            display         : block;
+            width           : 277.5px;
+            height          : 40px;
+            background-image: url("/images/ui/button-setavatar.png");
+            background-size : cover;
+            color           : #fff;
+            font-size       : 12px;
+            font-weight     : bold;
+            display         : flex;
+            align-items     : center;
+            justify-content : center;
+            padding-bottom  : 2px;
+        }
+
+        >.close-button {
+            margin          : auto;
+            margin-top      : 10px;
+            display         : block;
+            width           : 146px;
+            height          : 31.5px;
+            background-image: url("/images/ui/button-active.png");
+            background-size : cover;
+            color           : #fff;
+            font-size       : 12px;
+            font-weight     : bold;
+            display         : flex;
+            align-items     : center;
+            justify-content : center;
+            padding-bottom  : 2px;
+        }
+    }
+}

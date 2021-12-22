@@ -14,17 +14,19 @@ export default class Prompt extends GameNode {
         handler: (value: string) => void,
     ) {
         super(0, 0);
-        this.dom = el(".prompt",
-            el("h1", title),
-            el("p", message),
-            this.input = el("input", { placeholder, value }),
-            el("a.confirm-button", "Confirm", {
-                click: () => {
-                    handler(this.input.domElement.value);
-                    this.delete();
-                },
-            }),
-            el("a.cancel-button", "Cancel", { click: () => this.delete() }),
+        this.dom = el(".popup-background",
+            el(".prompt",
+                el("h1", title),
+                el("p", message),
+                this.input = el("input", { placeholder, value }),
+                el("a.confirm-button", "Confirm", {
+                    click: () => {
+                        handler(this.input.domElement.value);
+                        this.delete();
+                    },
+                }),
+                el("a.cancel-button", "Cancel", { click: () => this.delete() }),
+            ),
         );
         Game.current.ui.append(this);
     }

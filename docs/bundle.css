@@ -179,6 +179,7 @@ body {
 .alert {
   width: 350.5px;
   height: 271.5px;
+  margin: auto;
   background-image: url("/images/ui/dialogue/popup-back.png");
   background-size: cover;
   color: #663a3b;
@@ -213,6 +214,7 @@ body {
 .confirm {
   width: 350.5px;
   height: 271.5px;
+  margin: auto;
   background-image: url("/images/ui/dialogue/popup-back.png");
   background-size: cover;
   color: #663a3b;
@@ -260,6 +262,7 @@ body {
 .prompt {
   width: 350.5px;
   height: 271.5px;
+  margin: auto;
   background-image: url("/images/ui/dialogue/popup-back.png");
   background-size: cover;
   color: #663a3b;
@@ -315,10 +318,23 @@ body {
   text-align: center;
   padding-top: 6px;
 }
+.popup-background {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99999;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  overflow-y: scroll;
+  padding: 20px 0;
+}
 .enter {
   position: relative;
   width: 350.5px;
   height: 386.5px;
+  margin: auto;
   background-image: url("/images/ui/popup-back.png");
   background-size: cover;
   z-index: 999;
@@ -432,207 +448,6 @@ body {
 .enter > footer > .dots > .dot.on {
   background-image: url("/images/ui/phase-now.png");
 }
-.init-maid {
-  width: 350.5px;
-  height: 386.5px;
-  background-image: url("/images/ui/select-maid/popup.png");
-  background-size: cover;
-  color: #663a3b;
-  position: relative;
-  padding: 20px;
-}
-.init-maid > h1 {
-  font-weight: bold;
-  text-align: center;
-  padding-bottom: 20px;
-  border-bottom: 1px dashed #d4b7cb;
-}
-.init-maid > .content {
-  position: absolute;
-  padding: 74px 38px 20px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.init-maid > .content > .loading {
-  text-align: center;
-}
-.init-maid > .content > .empty > img {
-  display: block;
-  margin: auto;
-}
-.init-maid > .content > .empty > p {
-  margin-top: 10px;
-  text-align: center;
-}
-.init-maid > .content > .empty > .mint-button {
-  margin-top: 10px;
-  display: flex;
-  width: 277.5px;
-  height: 40px;
-  background-image: url("/images/ui/select-maid/mint-button.png");
-  background-size: cover;
-  padding: 4px 10px;
-  align-items: center;
-}
-.init-maid > .content > .empty > .mint-button > span {
-  flex-grow: 1;
-  color: #fff;
-  font-weight: bold;
-  text-align: center;
-  padding-bottom: 2px;
-}
-.init-maid > .content > .empty > .reload-button {
-  margin: auto;
-  margin-top: 32px;
-  display: block;
-  width: 146px;
-  height: 31.5px;
-  background-image: url("/images/ui/button-active.png");
-  background-size: cover;
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 2px;
-}
-.init-maid > .content > .avatars {
-  height: 260px;
-  overflow-y: scroll;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 4px;
-  padding-right: 4px;
-}
-.init-maid > .content > .avatars > .avatar {
-  aspect-ratio: 1;
-  background-image: url("/images/ui/select-maid/slot.png");
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-}
-.init-maid > .content > .avatars > .avatar > .wrapper {
-  text-align: center;
-}
-.init-maid > .content > .avatars > .avatar.selected::after {
-  content: " ";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/images/ui/select-maid/slot-selected.png");
-  background-size: cover;
-}
-.init-maid > .content > .continue-button {
-  margin: auto;
-  margin-top: 10px;
-  display: block;
-  width: 146px;
-  height: 31.5px;
-  background-image: url("/images/ui/button-active.png");
-  background-size: cover;
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 2px;
-}
-.init-maid > .content > .continue-button.off {
-  background-image: url("/images/ui/button-inactive.png");
-}
-.select-maid {
-  width: 350.5px;
-  height: 386.5px;
-  background-image: url("/images/ui/select-maid/popup.png");
-  background-size: cover;
-  color: #663a3b;
-  position: relative;
-  padding: 20px;
-}
-.select-maid > h1 {
-  font-weight: bold;
-  text-align: center;
-  padding-bottom: 20px;
-  border-bottom: 1px dashed #d4b7cb;
-}
-.select-maid > .content {
-  position: absolute;
-  padding: 74px 38px 64px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-.select-maid > .content > .loading {
-  text-align: center;
-}
-.select-maid > .content > .avatars {
-  height: 260px;
-  overflow-y: scroll;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 4px;
-  padding-right: 4px;
-}
-.select-maid > .content > .avatars > .avatar {
-  aspect-ratio: 1;
-  background-image: url("/images/ui/select-maid/slot.png");
-  background-size: cover;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  position: relative;
-}
-.select-maid > .content > .avatars > .avatar > .wrapper {
-  text-align: center;
-}
-.select-maid > .content > .avatars > .avatar.selected::after {
-  content: " ";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("/images/ui/select-maid/slot-selected.png");
-  background-size: cover;
-}
-.select-maid > footer {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  padding: 20px 38px;
-}
-.select-maid > footer > .close-button {
-  margin: auto;
-  margin-top: 10px;
-  display: block;
-  width: 146px;
-  height: 31.5px;
-  background-image: url("/images/ui/button-active.png");
-  background-size: cover;
-  color: #fff;
-  font-size: 12px;
-  font-weight: bold;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-bottom: 2px;
-}
 .avatar-dom {
   position: relative;
 }
@@ -646,40 +461,14 @@ body {
 }
 .avatar-dom > .message {
   position: absolute;
-  left: -50px;
+  min-width: 100px;
   bottom: 114px;
-  width: 100px;
   font-size: 12px;
   border: 1px solid #0e0000;
   border-radius: 4px;
   text-align: center;
   padding: 10px;
   background-color: rgba(255, 255, 255, 0.8);
-  word-break: break-all;
-}
-.avatar-dom > .message:before {
-  content: "";
-  width: 0px;
-  height: 0px;
-  position: absolute;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #000000;
-  border-bottom: 4px solid transparent;
-  right: calc(50% - 2px);
-  bottom: -8.5px;
-}
-.avatar-dom > .message:after {
-  content: "";
-  width: 0px;
-  height: 0px;
-  position: absolute;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #fff;
-  border-bottom: 4px solid transparent;
-  right: calc(50% - 2px);
-  bottom: -7.5px;
 }
 .bottom-bar {
   position: relative;
@@ -820,5 +609,591 @@ body {
   text-align: center;
   padding-top: 6px;
   color: #ff66bb;
+}
+.lootbox0 {
+  position: relative;
+  width: 326.5px;
+  height: 326.5px;
+  background-image: url("/images/ui/lootbox/0.png");
+  background-size: cover;
+}
+.lootbox0 > .probability-button {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 93.5px;
+  height: 23.5px;
+  background-image: url("/images/ui/probability.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #fff;
+}
+.lootbox0 > .supply-1-button {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/button-mint.png");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #fff;
+}
+.lootbox0 > .supply-1-button > span {
+  margin-right: 5px;
+}
+.lootbox0 > .supply-1-button > .balance {
+  display: flex;
+  align-items: center;
+  color: #627eea;
+}
+.lootbox0 > .supply-1-button > .balance > img {
+  margin-right: 5px;
+}
+.lootbox0 > .supply-10-button {
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/button-mint.png");
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #fff;
+}
+.lootbox0 > .supply-10-button > span {
+  margin-right: 5px;
+}
+.lootbox0 > .supply-10-button > .balance {
+  display: flex;
+  align-items: center;
+  color: #627eea;
+}
+.lootbox0 > .supply-10-button > .balance > img {
+  margin-right: 5px;
+}
+.init-maid-popup {
+  width: 350.5px;
+  height: 386.5px;
+  margin: auto;
+  background-image: url("/images/ui/select-maid/popup.png");
+  background-size: cover;
+  color: #663a3b;
+  position: relative;
+  padding: 20px;
+}
+.init-maid-popup > h1 {
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #d4b7cb;
+}
+.init-maid-popup > .content {
+  position: absolute;
+  padding: 74px 38px 20px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.init-maid-popup > .content > .loading {
+  text-align: center;
+}
+.init-maid-popup > .content > .empty > img {
+  display: block;
+  margin: auto;
+}
+.init-maid-popup > .content > .empty > p {
+  margin-top: 10px;
+  text-align: center;
+}
+.init-maid-popup > .content > .empty > .mint-button {
+  margin-top: 10px;
+  display: flex;
+  width: 277.5px;
+  height: 40px;
+  background-image: url("/images/ui/select-maid/mint-button.png");
+  background-size: cover;
+  padding: 4px 10px;
+  align-items: center;
+}
+.init-maid-popup > .content > .empty > .mint-button > span {
+  flex-grow: 1;
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 2px;
+}
+.init-maid-popup > .content > .empty > .reload-button {
+  margin: auto;
+  margin-top: 32px;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/button-active.png");
+  background-size: cover;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+}
+.init-maid-popup > .content > .avatars-wrapper {
+  height: 260px;
+  overflow-y: scroll;
+}
+.init-maid-popup > .content > .avatars-wrapper > .avatars {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 4px;
+  padding-right: 4px;
+}
+.init-maid-popup > .content > .avatars-wrapper > .avatars > .avatar {
+  aspect-ratio: 1;
+  background-image: url("/images/ui/select-maid/slot.png");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.init-maid-popup > .content > .avatars-wrapper > .avatars > .avatar > .wrapper {
+  text-align: center;
+}
+.init-maid-popup > .content > .avatars-wrapper > .avatars > .avatar.selected::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/ui/select-maid/slot-selected.png");
+  background-size: cover;
+}
+.init-maid-popup > .content > .continue-button {
+  margin: auto;
+  margin-top: 10px;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/button-active.png");
+  background-size: cover;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+}
+.init-maid-popup > .content > .continue-button.off {
+  background-image: url("/images/ui/button-inactive.png");
+}
+.select-maid-popup {
+  width: 350.5px;
+  height: 386.5px;
+  margin: auto;
+  background-image: url("/images/ui/select-maid/popup.png");
+  background-size: cover;
+  color: #663a3b;
+  position: relative;
+  padding: 20px;
+}
+.select-maid-popup > h1 {
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #d4b7cb;
+}
+.select-maid-popup > .content {
+  position: absolute;
+  padding: 74px 38px 64px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.select-maid-popup > .content > .loading {
+  text-align: center;
+}
+.select-maid-popup > .content > .avatars-wrapper {
+  height: 260px;
+  overflow-y: scroll;
+}
+.select-maid-popup > .content > .avatars-wrapper > .avatars {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 4px;
+  padding-right: 4px;
+}
+.select-maid-popup > .content > .avatars-wrapper > .avatars > .avatar {
+  aspect-ratio: 1;
+  background-image: url("/images/ui/select-maid/slot.png");
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+}
+.select-maid-popup > .content > .avatars-wrapper > .avatars > .avatar > .wrapper {
+  text-align: center;
+}
+.select-maid-popup > .content > .avatars-wrapper > .avatars > .avatar.selected::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/ui/select-maid/slot-selected.png");
+  background-size: cover;
+}
+.select-maid-popup > footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 38px;
+}
+.select-maid-popup > footer > .close-button {
+  margin: auto;
+  margin-top: 10px;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/button-active.png");
+  background-size: cover;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+}
+.maid-info-popup {
+  width: 350.5px;
+  height: 542px;
+  margin: auto;
+  background-image: url("/images/ui/popup-large.png");
+  background-size: cover;
+  color: #663a3b;
+  position: relative;
+  padding: 20px;
+}
+.maid-info-popup > h1 {
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #d4b7cb;
+}
+.maid-info-popup > .avatar {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  top: 200px;
+  text-align: center;
+}
+.maid-info-popup > .slots > .slot {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  background-image: url("/images/ui/select-maid/slot.png");
+  background-size: cover;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.maid-info-popup > .slots > .slot.hair {
+  left: 40px;
+  top: 140px;
+}
+.maid-info-popup > .slots > .slot.eye {
+  left: 40px;
+  top: 220px;
+}
+.maid-info-popup > .slots > .slot.skin-color {
+  left: 40px;
+  top: 300px;
+}
+.maid-info-popup > .slots > .slot.head-acce {
+  right: 40px;
+  top: 160px;
+}
+.maid-info-popup > .slots > .slot.costume {
+  right: 40px;
+  top: 280px;
+}
+.maid-info-popup > .slots > .slot > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.maid-info-popup > footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 38px;
+}
+.maid-info-popup > footer > .select-button {
+  margin: auto;
+  display: block;
+  width: 277.5px;
+  height: 40px;
+  background-image: url("/images/ui/button-setavatar.png");
+  background-size: cover;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+}
+.maid-info-popup > footer > .close-button {
+  margin: auto;
+  margin-top: 10px;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/button-active.png");
+  background-size: cover;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+}
+.select-item-popup {
+  width: 350.5px;
+  height: 386.5px;
+  margin: auto;
+  background-image: url("/images/ui/select-maid/popup.png");
+  background-size: cover;
+  color: #663a3b;
+  position: relative;
+  padding: 20px;
+}
+.select-item-popup > h1 {
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #d4b7cb;
+}
+.select-item-popup > .content {
+  position: absolute;
+  padding: 74px 38px 64px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.select-item-popup > .content > .loading {
+  text-align: center;
+}
+.select-item-popup > .content > .items-wrapper {
+  height: 260px;
+  overflow-y: scroll;
+}
+.select-item-popup > .content > .items-wrapper > .items {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 4px;
+  padding-right: 4px;
+}
+.select-item-popup > .content > .items-wrapper > .items > .item {
+  aspect-ratio: 1;
+  background-image: url("/images/ui/select-maid/slot.png");
+  background-size: cover;
+  flex-direction: column;
+  position: relative;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.select-item-popup > .content > .items-wrapper > .items > .item > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.select-item-popup > .content > .items-wrapper > .items > .item.selected::after {
+  content: " ";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("/images/ui/select-maid/slot-selected.png");
+  background-size: cover;
+}
+.select-item-popup > footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 20px 38px;
+}
+.select-item-popup > footer > .close-button {
+  margin: auto;
+  margin-top: 10px;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/button-active.png");
+  background-size: cover;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+}
+.store-popup {
+  width: 350.5px;
+  height: 542px;
+  margin: auto;
+  background-image: url("/images/ui/popup-large.png");
+  background-size: cover;
+  color: #663a3b;
+  position: relative;
+  padding: 20px 12px;
+}
+.store-popup > header {
+  position: relative;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #d4b7cb;
+}
+.store-popup > header > h1 {
+  font-weight: bold;
+  text-align: center;
+}
+.store-popup > header > .balance {
+  position: absolute;
+  right: 8px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  color: #627eea;
+  font-weight: bold;
+}
+.store-popup > header > .balance > img {
+  margin-right: 5px;
+}
+.store-popup > .content {
+  margin-top: 12px;
+  height: 410px;
+  overflow-y: auto;
+}
+.store-popup > footer > .close-button {
+  margin: auto;
+  margin-top: 12px;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/button-active.png");
+  background-size: cover;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
+}
+.result-popup {
+  width: 350.5px;
+  height: 542px;
+  margin: auto;
+  background-image: url("/images/ui/popup-large.png");
+  background-size: cover;
+  color: #663a3b;
+  position: relative;
+  padding: 20px 12px;
+}
+.result-popup > h1 {
+  font-weight: bold;
+  text-align: center;
+  padding-bottom: 20px;
+  border-bottom: 1px dashed #d4b7cb;
+}
+.result-popup > .content {
+  margin-top: 12px;
+  height: 410px;
+  overflow-y: auto;
+}
+.result-popup > .content > .result {
+  width: 325.5px;
+  height: 177.5px;
+  background-image: url("/images/ui/result-back.png");
+  background-size: cover;
+  padding-top: 10px;
+  margin-bottom: 10px;
+}
+.result-popup > .content > .result > .avatar {
+  display: block;
+  margin: auto;
+}
+.result-popup > .content > .result > .items {
+  margin: auto;
+  margin-top: 10px;
+  width: 268px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  gap: 4px;
+}
+.result-popup > .content > .result > .items > .item {
+  width: 50px;
+  height: 50px;
+  background-image: url("/images/ui/select-maid/slot.png");
+  background-size: cover;
+  padding: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.result-popup > .content > .result > .items > .item > img {
+  max-width: 100%;
+  max-height: 100%;
+}
+.result-popup > footer > .close-button {
+  margin: auto;
+  margin-top: 12px;
+  display: block;
+  width: 146px;
+  height: 31.5px;
+  background-image: url("/images/ui/button-active.png");
+  background-size: cover;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 2px;
 }
 

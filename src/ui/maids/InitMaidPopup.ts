@@ -1,21 +1,23 @@
 import { GameNode } from "@hanul/skyengine";
 import { DomNode, el } from "@hanul/skynode";
 import superagent from "superagent";
-import Config from "../Config";
-import Wallet from "../ethereum/Wallet";
-import maids from "../maids.json";
-import nursetypes from "../nursetypes.json";
-import Game from "../view/Game";
+import Config from "../../Config";
+import Wallet from "../../ethereum/Wallet";
+import maids from "../../maids.json";
+import nursetypes from "../../nursetypes.json";
+import Game from "../../view/Game";
 
-export default class InitMaid extends GameNode {
+export default class InitMaidPopup extends GameNode {
 
     private content: DomNode;
 
     constructor() {
         super(0, 0);
-        this.dom = el(".init-maid",
-            el("h1", "Select maid avatar"),
-            this.content = el(".content"),
+        this.dom = el(".popup-background",
+            el(".init-maid-popup",
+                el("h1", "Select maid avatar"),
+                this.content = el(".content"),
+            ),
         );
         Game.current.ui.append(this);
         this.loadMaids();
@@ -151,7 +153,7 @@ export default class InitMaid extends GameNode {
                 ).appendTo(list);
             }
 
-            this.content.empty().append(list, continueButton);
+            this.content.empty().append(el(".avatars-wrapper", list), continueButton);
         }
     }
 }
